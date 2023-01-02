@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "32531104096",
+    "project_id": "avozer-b1e13",
+    "storage_bucket": "avozer-b1e13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32531104096:android:01697ffa1a0b73c9eade05",
+        "android_client_info": {
+          "package_name": "com.firstapp.avozer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32531104096-jjp3hs46u5eqaje43fi0qki6aco25kuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxks5C8NBb_jQHkaRweiM1GGVZGwGERck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32531104096-jjp3hs46u5eqaje43fi0qki6aco25kuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
