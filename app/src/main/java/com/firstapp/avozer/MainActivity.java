@@ -22,16 +22,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         TextView username =(TextView) findViewById(R.id.emailReg);
-        TextView password =(TextView) findViewById(R.id.password);
+        TextView password =(TextView) findViewById(R.id.passwordReg);
 
         loginBtn = (MaterialButton) findViewById(R.id.loginbtn);
-        registerBtn = (MaterialButton) findViewById(R.id.registerbtn);
+        registerBtn = (MaterialButton) findViewById(R.id.registerBtn);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-                finish();
+//                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+//                finish();
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 

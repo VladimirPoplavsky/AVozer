@@ -39,7 +39,7 @@
         android:textColorHint="@color/white" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwordReg"
         android:layout_width="388dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/emailReg"
@@ -60,7 +60,7 @@
         android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password"
+        android:layout_below="@id/passwordReg"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -70,10 +70,10 @@
         android:text="LOGIN" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/registerbtn"
+        android:id="@+id/registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/password"
+        android:layout_below="@id/passwordReg"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="96dp"
         android:layout_marginBottom="20dp"
