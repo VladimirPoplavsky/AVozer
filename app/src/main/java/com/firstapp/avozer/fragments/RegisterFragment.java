@@ -120,7 +120,7 @@ public class RegisterFragment extends Fragment {
                             FirebaseUser user = auth.getCurrentUser();
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(getActivity(), "Authentication failed.",
+                            Toast.makeText(getActivity(), "Authentication  failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
