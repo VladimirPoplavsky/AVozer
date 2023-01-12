@@ -1,4 +1,4 @@
-package com.firstapp.avozer;
+package com.firstapp.avozer.fragments;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.firstapp.avozer.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
