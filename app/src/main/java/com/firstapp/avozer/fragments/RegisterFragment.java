@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -18,6 +19,11 @@ import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,6 +46,10 @@ public class RegisterFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    FirebaseDatabase database;
+
+    DatabaseReference myRef;
 
     public RegisterFragment() {
         // Required empty public constructor
@@ -116,6 +126,8 @@ public class RegisterFragment extends Fragment {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
                     FirebaseUser user = auth.getCurrentUser();
+
+                    writeDB();
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(getActivity(), "Authentication failed.",
@@ -124,6 +136,45 @@ public class RegisterFragment extends Fragment {
             }
         });
     }
+
+
+    public void readDB() {
+        // Read from the database
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users").child("0000001");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                Person value = dataSnapshot.getValue(Person.class);
+
+                Toast.makeText(getActivity(), value.name, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(getActivity(), "Oops, it is some error", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+    public void writeDB() {
+        // Write a message to the database
+        Person p = new Person("Vladimir", "0000001", "0581234567",
+                "vladimir@test.mail");
+
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users").child(p.id);
+
+        myRef.setValue(p);
+    }
+
+
 }
 
 

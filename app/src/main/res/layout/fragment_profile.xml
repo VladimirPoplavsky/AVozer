@@ -5,38 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Profile">
-    
-    
-    
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/test_readDB"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tab_layout">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Notiflication"/>
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Settings"/>
-
-    </com.google.android.material.tabs.TabLayout>
-
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/view_pager"
-        android:layout_below="@+id/tab_layout"/>
-
-
-
-
-
+        android:text="TextView" />
 </RelativeLayout>

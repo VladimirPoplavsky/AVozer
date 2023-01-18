@@ -4,10 +4,17 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,6 +67,41 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        readDB();;
+
+
+        return view;
+    }
+
+    public void readDB() {
+        // Read from the database
+        FirebaseDatabase database;
+
+
+        DatabaseReference myRef;
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("users").child("0000001");
+        myRef.addValueEventListener(new ValueEventListener() {
+
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                Person value = dataSnapshot.getValue(Person.class);
+//                TextView myTextView = ;
+//
+//                myTextView.setText(value.name);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Toast.makeText(getActivity(), "Oops, it is some error", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }
