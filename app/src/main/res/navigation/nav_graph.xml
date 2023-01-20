@@ -35,23 +35,5 @@
         android:id="@+id/feedFragment"
         android:name="com.firstapp.avozer.fragments.FeedFragment"
         android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" >
-        <action
-            android:id="@+id/action_feedFragment_to_notiflicationFragment"
-            app:destination="@id/notiflicationFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/notiflicationFragment"
-        android:name="com.firstapp.avozer.fragments.NotiflicationFragment"
-        android:label="fragment_notiflication"
-        tools:layout="@layout/fragment_notiflication" >
-        <action
-            android:id="@+id/action_notiflicationFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.firstapp.avozer.fragments.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_feed" />
 </navigation>
