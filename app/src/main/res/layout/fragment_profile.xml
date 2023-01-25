@@ -26,16 +26,13 @@
                 />
 
         </com.google.android.material.appbar.AppBarLayout>
+        
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/frameLayout"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:fontFamily="cursive"
-            android:textAlignment="center"
-            android:text="Navigation Drawer Tutorial"
-            android:textColor="@color/black"
-            android:textSize="50dp" />
+
 
     </RelativeLayout>
 

@@ -16,8 +16,14 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_feedFragment"
-            app:destination="@id/feedFragment" />
+            android:id="@+id/action_profileFragment_to_homeyFragmentage"
+            app:destination="@id/homeyFragmentage" />
+        <action
+            android:id="@+id/action_profileFragment_to_messageFragment"
+            app:destination="@id/messageFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingssFragmento"
+            app:destination="@id/settingssFragmento" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -32,8 +38,18 @@
             app:destination="@id/registerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/feedFragment"
-        android:name="com.firstapp.avozer.fragments.FeedFragment"
-        android:label="fragment_feed"
-        tools:layout="@layout/fragment_feed" />
+        android:id="@+id/homeyFragmentage"
+        android:name="com.firstapp.avozer.fragments.HomeyFragmentage"
+        android:label="fragment_homey_fragmentage"
+        tools:layout="@layout/fragment_homey_fragmentage" />
+    <fragment
+        android:id="@+id/messageFragment"
+        android:name="com.firstapp.avozer.fragments.messageFragment"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/settingssFragmento"
+        android:name="com.firstapp.avozer.fragments.SettingssFragmento"
+        android:label="fragment_settingss_fragmento"
+        tools:layout="@layout/fragment_settingss_fragmento" />
 </navigation>

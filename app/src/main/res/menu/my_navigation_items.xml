@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <group android:checkableBehavior="single">
+
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/baseline_home_24"
@@ -23,19 +25,24 @@
         android:id="@+id/settings"
         android:icon="@drawable/baseline_settings_24"
         android:title="Settings" />
+    </group>
 
 
     <item android:title="Profile">
         <menu>
+
+            <group android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_login"
                 android:icon="@drawable/baseline_login_24"
                 android:title="Login" />
+            </group>
         </menu>
     </item>
 
     <item android:title="Communicate">
         <menu>
+            <group android:checkableBehavior="single">
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/baseline_share_24"
@@ -44,6 +51,7 @@
                 android:id="@+id/nav_rate"
                 android:icon="@drawable/baseline_rate_review_24"
                 android:title="Rate us" />
+            </group>
         </menu>
     </item>
 </menu>

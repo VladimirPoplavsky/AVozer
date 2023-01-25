@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.R;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -89,26 +91,33 @@ public class ProfileFragment extends Fragment {
             public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
 
                 int id = item.getItemId();
+                item.setChecked(true);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 switch (id)
                 {
 
                     case R.id.nav_home:
-                        Toast.makeText(getActivity(), "Home is Clicked", Toast.LENGTH_SHORT).show();break;
+                       Toast.makeText(getActivity(), "Home is Clicked", Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeyFragmentage);
+                        break;
                     case R.id.nav_message:
-                        Toast.makeText(getActivity(), "Message is Clicked",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(getActivity(), "Message is Clicked",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_messageFragment);
+                        break;
                     case R.id.sync:
-                        Toast.makeText(getActivity(), "Synch is Clicked",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(getActivity(), "loading",Toast.LENGTH_SHORT).show();break;
                     case R.id.trash:
-                        Toast.makeText(getActivity(), "Trash is Clicked",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(getActivity(), "loading",Toast.LENGTH_SHORT).show();break;
                     case R.id.settings:
-                        Toast.makeText(getActivity(), "Settings is Clicked",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(getActivity(), "loadinG",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_settingssFragmento);
+                        break;
                     case R.id.nav_login:
-                        Toast.makeText(getActivity(), "Login is Clicked",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(getActivity(), "loadin2g",Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_share:
-                        Toast.makeText(getActivity(), "Share is clicked",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(getActivity(), "loadin23g",Toast.LENGTH_SHORT).show();break;
                     case R.id.nav_rate:
-                        Toast.makeText(getActivity(), "Rate us is Clicked",Toast.LENGTH_SHORT).show();break;
+                        Toast.makeText(getActivity(), "Rate us ",Toast.LENGTH_SHORT).show();break;
                     default:
                         return true;
 
@@ -125,4 +134,9 @@ public class ProfileFragment extends Fragment {
         return view;
 
     }
+
+    private void replaceFragment(Fragment fragment){
+
+    }
+
 }
