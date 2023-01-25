@@ -96,6 +96,7 @@ public class LoginFragment extends Fragment {
                 String txtEmail = email.getText().toString();
                 String txtPassword = password.getText().toString();
 
+
                 login(txtEmail, txtPassword, view);
             }
         });
@@ -107,9 +108,13 @@ public class LoginFragment extends Fragment {
     public void login(String email, String password, View view){
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
+        if(email.isEmpty() || password.isEmpty()){
+            Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(getActivity() , new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
