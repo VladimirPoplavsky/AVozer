@@ -236,7 +236,7 @@ public class RegisterFragment extends Fragment {
 
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("users").child(p.teudat_zeut);
+        myRef = database.getReference("users").child(p.uid);
 
         myRef.setValue(p);
     }
