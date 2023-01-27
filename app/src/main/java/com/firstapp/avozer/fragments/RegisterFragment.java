@@ -181,15 +181,20 @@ public class RegisterFragment extends Fragment {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     // Sign in success, update UI with the signed-in user's information
-                    FirebaseUser user = auth.getCurrentUser();
-                    String txtId, txtFirstName, txtLastName, txtCity, txtPhone;
+                    //FirebaseUser user = auth.getCurrentUser();
+                    String txtId, txtUid, txtFirstName, txtLastName, txtCity, txtPhone;
                     txtId = teudatZeut.getText().toString();
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    txtUid = user.getUid();
+
+
                     txtFirstName = firstName.getText().toString();
                     txtLastName = lastName.getText().toString();
                     txtCity = city.getText().toString();
                     txtPhone = phone.getText().toString();
                     
-                    writeDB(txtId, txtFirstName, txtLastName, email, txtCity, txtPhone);
+                    writeDB(txtId, txtUid, txtFirstName, txtLastName, email, txtPhone, txtCity);
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(getActivity(), "Authentication failed.",
@@ -224,10 +229,10 @@ public class RegisterFragment extends Fragment {
 //    }
 
 
-    public void writeDB(String id, String firstName, String lastName, String email, String phone, String city) {
+    public void writeDB(String id, String uid, String firstName, String lastName, String email, String phone, String city) {
         // Write a message to the database        
         
-        Person p = new Person(id, firstName, lastName, email, phone, city);
+        Person p = new Person(id, uid, firstName, lastName, email, phone, city);
 
 
         database = FirebaseDatabase.getInstance();

@@ -1,21 +1,24 @@
 package com.firstapp.avozer.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,44 +73,63 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-
-        //readDB(view);
+        readDB(view);
 
 
         return view;
     }
 
     public void readDB(View view) {
-        // Read from the database
-        FirebaseDatabase database;
-        DatabaseReference myRef;
-
-
-        TextView textView = view.findViewById(R.id.test_readDB);
-
-
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("users").child("0000001");
+        //get current user uid to read other data using uid as a key
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
 
 
-        myRef.addValueEventListener(new ValueEventListener() {
-
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("users").child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                Person value = dataSnapshot.getValue(Person.class);
-
-                textView.setText(value.teudat_zeut);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Toast.makeText(getActivity(), "Oops, it is some error", Toast.LENGTH_LONG).show();
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    TextView city = view.findViewById(R.id.test_city);
+                    city.setText(uid);
+                }
             }
         });
+
+//        // Read from the database
+//        FirebaseDatabase database;
+//        DatabaseReference myRef;
+//
+//        database = FirebaseDatabase.getInstance();
+//        myRef = database.getReference("users").child(uid);
+//
+//        // test part
+//        TextView city = view.findViewById(R.id.test_city);
+//
+//        myRef.addValueEventListener(new ValueEventListener() {
+//
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                Person value = dataSnapshot.getValue(Person.class);
+//                city.setText("blablabla");
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError error) {
+//                // Failed to read value
+//                Toast.makeText(getActivity(), "Oops, it is some error", Toast.LENGTH_LONG).show();
+//            }
+//        });
+
+
+
     }
 }

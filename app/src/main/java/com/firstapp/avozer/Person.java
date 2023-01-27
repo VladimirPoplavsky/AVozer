@@ -2,6 +2,7 @@ package com.firstapp.avozer;
 
 public class Person {
     public String teudat_zeut;
+    public String uid;
     public String firstName;
     public String lastName;
     public String email;
@@ -25,8 +26,9 @@ public class Person {
 
     public Person(){}
 
-    public Person(String teudat_zeut, String firstName, String lastName, String email, String phone, String city) {
+    public Person(String teudat_zeut, String uid, String firstName, String lastName, String email, String phone, String city) {
         this.teudat_zeut = teudat_zeut;
+        this.uid = uid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
