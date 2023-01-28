@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
@@ -95,8 +94,8 @@ public class ProfileFragment extends Fragment {
                 }
                 else {
                     Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    TextView city = view.findViewById(R.id.test_city);
-                    city.setText(uid);
+//                    TextView city = view.findViewById(R.id.test_city);
+//                    city.setText(uid);
                 }
             }
         });
