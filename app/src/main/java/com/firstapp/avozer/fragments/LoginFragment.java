@@ -123,7 +123,7 @@ public class LoginFragment extends Fragment {
                             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_profileFragment);
                         } else {
 //                            // If sign in fails, display a message to the user.
-                            Toast.makeText(getActivity(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Authentication failed. ", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
