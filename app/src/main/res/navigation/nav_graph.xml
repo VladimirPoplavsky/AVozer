@@ -16,14 +16,14 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_homeyFragmentage"
-            app:destination="@id/homeyFragmentage" />
-        <action
             android:id="@+id/action_profileFragment_to_messageFragment"
             app:destination="@id/messageFragment" />
         <action
             android:id="@+id/action_profileFragment_to_settingssFragmento"
             app:destination="@id/settingssFragmento" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeyFragmentage"
+            app:destination="@id/homeyFragmentage" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

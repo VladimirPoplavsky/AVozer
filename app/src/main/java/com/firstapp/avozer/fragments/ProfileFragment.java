@@ -1,23 +1,22 @@
 package com.firstapp.avozer.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import org.checkerframework.checker.nullness.qual.NonNull;
+import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.navigation.NavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,65 +69,75 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view =  inflater.inflate(R.layout.fragment_profile, container, false);
 
-        readDB(view);
-
-
-        return view;
-    }
-
-    public void readDB(View view) {
-        //get current user uid to read other data using uid as a key
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
+        NavigationView navigationView = view.findViewById(R.id.navigation_view);
+        MaterialToolbar toolbar = view.findViewById(R.id.topAppBar);
+        DrawerLayout drawerLayout = view.findViewById(R.id.drawer_layout);
 
 
+        // --------------------------------------------------------------------
 
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("users").child(uid).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
+            public void onClick(View v) {
+
+                drawerLayout.openDrawer(GravityCompat.START);
+
+            }
+        });
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+
+                int id = item.getItemId();
+                item.setChecked(true);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                switch (id)
+                {
+
+                    case R.id.nav_home:
+                        Toast.makeText(getActivity(), "Home is Clicked", Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeyFragmentage);
+                        break;
+                    case R.id.nav_message:
+                        Toast.makeText(getActivity(), "Message is Clicked",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_messageFragment);
+                        break;
+                    case R.id.sync:
+                        Toast.makeText(getActivity(), "loading",Toast.LENGTH_SHORT).show();break;
+                    case R.id.trash:
+                        Toast.makeText(getActivity(), "loading",Toast.LENGTH_SHORT).show();break;
+                    case R.id.settings:
+                        Toast.makeText(getActivity(), "loadinG",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_settingssFragmento);
+                        break;
+                    case R.id.nav_login:
+                        Toast.makeText(getActivity(), "loadin2g",Toast.LENGTH_SHORT).show();break;
+                    case R.id.nav_share:
+                        Toast.makeText(getActivity(), "loadin23g",Toast.LENGTH_SHORT).show();break;
+                    case R.id.nav_rate:
+                        Toast.makeText(getActivity(), "Rate us ",Toast.LENGTH_SHORT).show();break;
+                    default:
+                        return true;
+
                 }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-//                    TextView city = view.findViewById(R.id.test_city);
-//                    city.setText(uid);
-                }
+                return true;
             }
         });
 
-//        // Read from the database
-//        FirebaseDatabase database;
-//        DatabaseReference myRef;
-//
-//        database = FirebaseDatabase.getInstance();
-//        myRef = database.getReference("users").child(uid);
-//
-//        // test part
-//        TextView city = view.findViewById(R.id.test_city);
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                Person value = dataSnapshot.getValue(Person.class);
-//                city.setText("blablabla");
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error) {
-//                // Failed to read value
-//                Toast.makeText(getActivity(), "Oops, it is some error", Toast.LENGTH_LONG).show();
-//            }
-//        });
 
 
+
+
+
+        return view;
 
     }
+
+    private void replaceFragment(Fragment fragment){
+
+    }
+
 }
