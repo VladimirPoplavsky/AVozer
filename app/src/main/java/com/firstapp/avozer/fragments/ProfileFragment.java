@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -105,20 +106,16 @@ public class ProfileFragment extends Fragment {
                         Toast.makeText(getActivity(), "Message is Clicked",Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_messageFragment);
                         break;
-                    case R.id.sync:
-                        Toast.makeText(getActivity(), "loading",Toast.LENGTH_SHORT).show();break;
-                    case R.id.trash:
-                        Toast.makeText(getActivity(), "loading",Toast.LENGTH_SHORT).show();break;
+
+
                     case R.id.settings:
                         Toast.makeText(getActivity(), "loadinG",Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_settingssFragmento);
                         break;
                     case R.id.nav_login:
                         Toast.makeText(getActivity(), "loadin2g",Toast.LENGTH_SHORT).show();break;
-                    case R.id.nav_share:
-                        Toast.makeText(getActivity(), "loadin23g",Toast.LENGTH_SHORT).show();break;
-                    case R.id.nav_rate:
-                        Toast.makeText(getActivity(), "Rate us ",Toast.LENGTH_SHORT).show();break;
+
+
                     default:
                         return true;
 
@@ -128,6 +125,23 @@ public class ProfileFragment extends Fragment {
         });
 
 
+        // User press button "Want to help" or "Need help"
+        Button needHelp = view.findViewById(R.id.need_help_button);
+        Button wantToHelp = view.findViewById(R.id.want_help_button);
+
+        needHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_placeRequestFormFragment);
+            }
+        });
+
+        wantToHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_findRequestFormFragment);
+            }
+        });
 
 
 

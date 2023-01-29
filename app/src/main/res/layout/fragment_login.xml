@@ -80,18 +80,17 @@
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="REGISTER" />
 
-    <TextView
-        android:id="@+id/forgetPass"
+    <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loginbtn"
+        android:id="@+id/forgotPassButton"
+        android:text="Forgot Password?"
+        android:layout_below="@id/registerBtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Forgot?"
-        android:textColor="@color/white" />
+        android:layout_marginTop="96dp"/>
+
+
+
 
 
 </RelativeLayout>
