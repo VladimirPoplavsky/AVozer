@@ -1,14 +1,13 @@
 package com.firstapp.avozer.fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.R;
 
@@ -18,7 +17,6 @@ import com.firstapp.avozer.R;
  * create an instance of this fragment.
  */
 public class placeRequestFormFragment extends Fragment {
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,6 +66,10 @@ public class placeRequestFormFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_place_request_form, container, false);;
 
+        String[] ways_to_help = getResources().getStringArray(R.array.ways_to_help);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(requireContext(), R.layout.dropdown_item, ways_to_help);
+        AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.what_do_you_need_list);
+        autoCompleteTextView.setAdapter(arrayAdapter);
 
 
         return view;
