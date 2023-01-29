@@ -76,6 +76,14 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
 
+        Button forgotPassButton = view.findViewById(R.id.forgotPassButton);
+        forgotPassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_forgotPassFragment);
+            }
+        });
+
 
 
         Button registerButton = view.findViewById(R.id.registerBtn);
