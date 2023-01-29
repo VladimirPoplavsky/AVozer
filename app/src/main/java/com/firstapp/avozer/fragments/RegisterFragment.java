@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
@@ -163,7 +164,7 @@ public class RegisterFragment extends Fragment {
                 }else if (txtPassword.length() < 6){
                     Toast.makeText(getActivity(), "Password To Short", Toast.LENGTH_SHORT).show();
                 }else{
-                    registerUser(txtEmail, txtPassword);
+                    registerUser(txtEmail, txtPassword, view);
                 }
             }
         });
@@ -174,7 +175,7 @@ public class RegisterFragment extends Fragment {
 
 
 
-    private void registerUser(String email, String password) {
+    private void registerUser(String email, String password, View view) {
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
             @Override
@@ -186,6 +187,7 @@ public class RegisterFragment extends Fragment {
                     txtId = teudatZeut.getText().toString();
 
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    assert user != null;
                     txtUid = user.getUid();
 
 
@@ -195,6 +197,7 @@ public class RegisterFragment extends Fragment {
                     txtPhone = phone.getText().toString();
                     
                     writeDB(txtId, txtUid, txtFirstName, txtLastName, email, txtPhone, txtCity);
+                    Navigation.findNavController(view).navigate(R.id.action_registerFragment_to_idVerificationFragment);
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(getActivity(), "Authentication failed.",

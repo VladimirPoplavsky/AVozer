@@ -9,7 +9,11 @@
         android:id="@+id/registerFragment"
         android:name="com.firstapp.avozer.fragments.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_idVerificationFragment"
+            app:destination="@id/idVerificationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.firstapp.avozer.fragments.ProfileFragment"
@@ -24,6 +28,12 @@
         <action
             android:id="@+id/action_profileFragment_to_homeyFragmentage"
             app:destination="@id/homeyFragmentage" />
+        <action
+            android:id="@+id/action_profileFragment_to_placeRequestFormFragment"
+            app:destination="@id/placeRequestFormFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_findRequestFormFragment"
+            app:destination="@id/findRequestFormFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -52,4 +62,19 @@
         android:name="com.firstapp.avozer.fragments.SettingssFragmento"
         android:label="fragment_settingss_fragmento"
         tools:layout="@layout/fragment_settingss_fragmento" />
+    <fragment
+        android:id="@+id/idVerificationFragment"
+        android:name="com.firstapp.avozer.fragments.idVerificationFragment"
+        android:label="fragment_id_verification"
+        tools:layout="@layout/fragment_id_verification" />
+    <fragment
+        android:id="@+id/findRequestFormFragment"
+        android:name="com.firstapp.avozer.fragments.findRequestFormFragment"
+        android:label="fragment_find_request_form"
+        tools:layout="@layout/fragment_find_request_form" />
+    <fragment
+        android:id="@+id/placeRequestFormFragment"
+        android:name="com.firstapp.avozer.fragments.placeRequestFormFragment"
+        android:label="fragment_place_request_form"
+        tools:layout="@layout/fragment_place_request_form" />
 </navigation>

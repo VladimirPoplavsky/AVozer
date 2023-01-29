@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -128,6 +129,23 @@ public class ProfileFragment extends Fragment {
         });
 
 
+        // User press button "Want to help" or "Need help"
+        Button needHelp = view.findViewById(R.id.need_help_button);
+        Button wantToHelp = view.findViewById(R.id.want_help_button);
+
+        needHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_placeRequestFormFragment);
+            }
+        });
+
+        wantToHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_findRequestFormFragment);
+            }
+        });
 
 
 
