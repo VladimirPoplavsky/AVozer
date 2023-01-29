@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPassFragment"
+            app:destination="@id/forgotPassFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeyFragmentage"
@@ -77,4 +80,9 @@
         android:name="com.firstapp.avozer.fragments.placeRequestFormFragment"
         android:label="fragment_place_request_form"
         tools:layout="@layout/fragment_place_request_form" />
+    <fragment
+        android:id="@+id/forgotPassFragment"
+        android:name="com.firstapp.avozer.fragments.ForgotPassFragment"
+        android:label="fragment_forgot_pass"
+        tools:layout="@layout/fragment_forgot_pass" />
 </navigation>

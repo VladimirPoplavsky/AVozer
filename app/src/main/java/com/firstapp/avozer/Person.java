@@ -9,20 +9,7 @@ public class Person {
     public String phone;
     public String city;
 
-//
-//    public String id;
-//    public String name;
-//    public String email;
-//    public String phone;
 
-
-
-//    public Person(String id, String name, String phone, String email) {
-//        this.id = id;
-//        this.name = name;
-//        this.phone = phone;
-//        this.email = email;
-//    }
 
     public Person(){}
 
