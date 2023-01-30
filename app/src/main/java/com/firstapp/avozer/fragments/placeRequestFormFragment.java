@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 /**
@@ -92,9 +94,33 @@ public class placeRequestFormFragment extends Fragment {
         });
         //End time picker
 
+
+        //Save and publish request
+        Button saveAndPublishBtn = view.findViewById(R.id.save_request_btn);
+        saveAndPublishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveRequest(view);
+            }
+        });
+
+
         return view;
     }
 
+    private void saveRequest(View view) {
+
+    }
+
+    private long getCurrentDateInMillisecond(){
+        return Calendar.getInstance().getTimeInMillis();
+    }
+
+    private String[] longIntoString(long milliseconds){
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        return  new String[]{dateFormat.format(milliseconds), timeFormat.format(milliseconds)};
+    }
 
 
     public void pickTime(Button timeButton, View view){
@@ -106,8 +132,16 @@ public class placeRequestFormFragment extends Fragment {
                 timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
             }
         };
+
+        // Analog clock design of time picker
         TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),
                 onTimeSetListener, hour, minute, true);
+
+
+        // Spinner style design of time picker
+//        int style = AlertDialog.THEME_HOLO_DARK;
+//        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(), style,
+//                onTimeSetListener, hour, minute, true);
 
         timePickerDialog.setTitle("Select Time");
         timePickerDialog.show();
