@@ -1,12 +1,17 @@
 package com.firstapp.avozer.fragments;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.TimePicker;
 
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.R;
@@ -16,7 +21,7 @@ import com.firstapp.avozer.R;
  * Use the {@link placeRequestFormFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class placeRequestFormFragment extends Fragment {
+public class placeRequestFormFragment extends Fragment implements TimePickerDialog.OnTimeSetListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -66,12 +71,30 @@ public class placeRequestFormFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_place_request_form, container, false);;
 
+        //Drop-down menu (select type: babysitter, dog walker, cleaner)
         String[] ways_to_help = getResources().getStringArray(R.array.ways_to_help);
         ArrayAdapter arrayAdapter = new ArrayAdapter(requireContext(), R.layout.dropdown_item, ways_to_help);
         AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.what_do_you_need_list);
         autoCompleteTextView.setAdapter(arrayAdapter);
 
 
+        //Time picker
+        Button timePickBtn = view.findViewById(R.id.time_picker_btn);
+        timePickBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment timePicker = new TimePickerFragment();
+                timePicker.show(getActivity().getSupportFragmentManager(), "time picker");
+
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        TextView textView = view.findViewById(R.id.show_selected_time_txt_view);
+        textView.setText("Hour: " + hourOfDay + " Minute " + minute);
     }
 }
