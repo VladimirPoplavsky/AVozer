@@ -8,20 +8,23 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.R;
+
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link placeRequestFormFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class placeRequestFormFragment extends Fragment implements TimePickerDialog.OnTimeSetListener {
+public class placeRequestFormFragment extends Fragment {
+
+    // vars for time picker
+    int hour, minute;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,25 +79,38 @@ public class placeRequestFormFragment extends Fragment implements TimePickerDial
         ArrayAdapter arrayAdapter = new ArrayAdapter(requireContext(), R.layout.dropdown_item, ways_to_help);
         AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.what_do_you_need_list);
         autoCompleteTextView.setAdapter(arrayAdapter);
+        // end Drop-down menu
 
 
         //Time picker
-        Button timePickBtn = view.findViewById(R.id.time_picker_btn);
-        timePickBtn.setOnClickListener(new View.OnClickListener() {
+        Button timeButton = view.findViewById(R.id.time_picker_btn);
+        timeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogFragment timePicker = new TimePickerFragment();
-                timePicker.show(getActivity().getSupportFragmentManager(), "time picker");
-
+                pickTime(timeButton, view);
             }
         });
+        //End time picker
 
         return view;
     }
 
-    @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        TextView textView = view.findViewById(R.id.show_selected_time_txt_view);
-        textView.setText("Hour: " + hourOfDay + " Minute " + minute);
+
+
+    public void pickTime(Button timeButton, View view){
+        TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
+                hour = selectedHour;
+                minute = selectedMinute;
+                timeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", hour, minute));
+            }
+        };
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getActivity(),
+                onTimeSetListener, hour, minute, true);
+
+        timePickerDialog.setTitle("Select Time");
+        timePickerDialog.show();
     }
+
 }
