@@ -1,22 +1,33 @@
 package com.firstapp.avozer.fragments;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
+import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.Deal;
 import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +42,11 @@ public class placeRequestFormFragment extends Fragment {
 
     // vars for time picker
     int hour, minute;
+
+    // Deal data
+    String dealType;
+    String city;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -80,6 +96,7 @@ public class placeRequestFormFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_place_request_form, container, false);;
 
+
         //Drop-down menu (select type: babysitter, dog walker, cleaner)
         String[] ways_to_help = getResources().getStringArray(R.array.ways_to_help);
         ArrayAdapter arrayAdapter = new ArrayAdapter(requireContext(), R.layout.dropdown_item, ways_to_help);
@@ -99,21 +116,13 @@ public class placeRequestFormFragment extends Fragment {
         //End time picker
 
 
+
         //Save and publish request
         Button saveAndPublishBtn = view.findViewById(R.id.save_request_btn);
         saveAndPublishBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveRequest(view);
-
-                //test
-                Deal deal = new Deal("000000002", true, "Some Comments");
-                FirebaseDatabase database;
-                DatabaseReference myRef;
-                database = FirebaseDatabase.getInstance();
-                myRef = database.getReference("deals").child(deal.dealID);
-                myRef.setValue(deal);
-                // End test
             }
         });
 
@@ -122,6 +131,50 @@ public class placeRequestFormFragment extends Fragment {
     }
 
     private void saveRequest(View view) {
+        /* currentTimeMillis is unique value so I can use it
+         as request ID (because I did not find good method to get last child
+         in firebase realtime database).
+         Also this value will be used to store time creating request
+         */
+        String dealId = String.valueOf(System.currentTimeMillis());
+
+        TextView typeTextView = view.findViewById(R.id.what_do_you_need_list);
+        dealType = typeTextView.getText().toString();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        String clientId = user.getUid();
+
+        // Default value of helper is * (empty). Will be updated when deal will be
+        // accepted by any helper
+        String helperId = "*";
+
+
+        // Get Client City
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("users/" + clientId);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Person personClient = snapshot.getValue(Person.class);
+                assert personClient != null;
+                city = personClient.city;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        Deal deal = new Deal(dealId, dealType, clientId, helperId, city,
+                "test", "test",
+                true, true, "Comments");
+        databaseReference = firebaseDatabase.getReference("deals").child(deal.dealID);
+
+        databaseReference.setValue(deal);
+
 
     }
 

@@ -3,26 +3,20 @@ package com.firstapp.avozer;
 import java.time.format.DateTimeFormatter;
 
 public class Deal {
-    enum Type {
-        BABYSITTER,
-        DOGWALKER,
-        CLEANER
-    }
-
     public String dealID;
-    public Type type;
+    public String type;
     public String clientUid;
     public String helperUid;
     public String city;
-    public DateTimeFormatter timeCreated;
-    public DateTimeFormatter whenNeedHelp;
+    public String timeCreated;
+    public String whenNeedHelp;
     public boolean helperIsFound;
     public boolean dealIsDone;
     public String comments;
 
 
-    public Deal(String dealID, Type type, String clientUid, String helperUid, String city,
-                DateTimeFormatter timeCreated, DateTimeFormatter whenNeedHelp,
+    public Deal(String dealID, String type, String clientUid, String helperUid, String city,
+                String timeCreated, String whenNeedHelp,
                 boolean helperIsFound, boolean dealIsDone, String comments) {
         this.dealID = dealID;
         this.type = type;
@@ -35,11 +29,4 @@ public class Deal {
         this.dealIsDone = dealIsDone;
         this.comments = comments;
     }
-
-    public Deal(String dealID, boolean helperIsFound, String comments) {
-        this.dealID = dealID;
-        this.helperIsFound = helperIsFound;
-        this.comments = comments;
-    }
-
 }
