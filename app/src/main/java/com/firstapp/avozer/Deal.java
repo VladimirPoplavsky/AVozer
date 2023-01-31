@@ -14,11 +14,11 @@ public class Deal {
     public String clientUid;
     public String helperUid;
     public String city;
-    DateTimeFormatter timeCreated;
-    DateTimeFormatter whenNeedHelp;
-    boolean helperIsFound;
-    boolean dealIsDone;
-    String comments;
+    public DateTimeFormatter timeCreated;
+    public DateTimeFormatter whenNeedHelp;
+    public boolean helperIsFound;
+    public boolean dealIsDone;
+    public String comments;
 
 
     public Deal(String dealID, Type type, String clientUid, String helperUid, String city,
@@ -36,16 +36,9 @@ public class Deal {
         this.comments = comments;
     }
 
-    public Deal(String dealID, String city, boolean helperIsFound, boolean dealIsDone, String comments) {
+    public Deal(String dealID, boolean helperIsFound, String comments) {
         this.dealID = dealID;
-        this.type = type;
-        this.clientUid = clientUid;
-        this.helperUid = helperUid;
-        this.city = city;
-        this.timeCreated = timeCreated;
-        this.whenNeedHelp = whenNeedHelp;
         this.helperIsFound = helperIsFound;
-        this.dealIsDone = dealIsDone;
         this.comments = comments;
     }
 

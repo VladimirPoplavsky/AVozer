@@ -12,7 +12,11 @@ import android.widget.TimePicker;
 
 import androidx.fragment.app.Fragment;
 
+import com.firstapp.avozer.Deal;
+import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -101,6 +105,15 @@ public class placeRequestFormFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 saveRequest(view);
+
+                //test
+                Deal deal = new Deal("000000002", true, "Some Comments");
+                FirebaseDatabase database;
+                DatabaseReference myRef;
+                database = FirebaseDatabase.getInstance();
+                myRef = database.getReference("deals").child(deal.dealID);
+                myRef.setValue(deal);
+                // End test
             }
         });
 
@@ -111,17 +124,6 @@ public class placeRequestFormFragment extends Fragment {
     private void saveRequest(View view) {
 
     }
-
-    private long getCurrentDateInMillisecond(){
-        return Calendar.getInstance().getTimeInMillis();
-    }
-
-    private String[] longIntoString(long milliseconds){
-        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-        return  new String[]{dateFormat.format(milliseconds), timeFormat.format(milliseconds)};
-    }
-
 
     public void pickTime(Button timeButton, View view){
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
