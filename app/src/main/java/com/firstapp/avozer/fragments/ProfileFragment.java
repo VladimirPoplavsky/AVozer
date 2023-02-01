@@ -137,19 +137,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_placeRequestFormFragment);
-//
-//                // test
-//                FirebaseDatabase database;
-//
-//                DatabaseReference myRef;
-//
-//                 Deal d = new Deal("000000001", "SomeCity", false, false, "some comments");
-//
-//
-//                database = FirebaseDatabase.getInstance();
-//                myRef = database.getReference("deals").child(d.dealID);
-//
-//                myRef.setValue(d);
 
             }
         });

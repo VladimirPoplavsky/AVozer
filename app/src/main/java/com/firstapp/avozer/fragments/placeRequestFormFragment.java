@@ -1,11 +1,7 @@
 package com.firstapp.avozer.fragments;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
-import android.annotation.SuppressLint;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,22 +11,15 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.Deal;
-import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Locale;
 
 /**
@@ -44,8 +33,16 @@ public class placeRequestFormFragment extends Fragment {
     int hour, minute;
 
     // Deal data
-    String dealType;
-    String city;
+    public String dealId;
+    public String dealType;
+    public String clientUid;
+    public String helperUid;
+    public String city;
+    public String timeCreated;
+    public String whenNeedHelp;
+    public boolean helperIsFound;
+    public boolean dealIsDone;
+    public String comments;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -96,6 +93,8 @@ public class placeRequestFormFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_place_request_form, container, false);;
 
+        setCurrentClientCity();
+
 
         //Drop-down menu (select type: babysitter, dog walker, cleaner)
         String[] ways_to_help = getResources().getStringArray(R.array.ways_to_help);
@@ -136,45 +135,53 @@ public class placeRequestFormFragment extends Fragment {
          in firebase realtime database).
          Also this value will be used to store time creating request
          */
-        String dealId = String.valueOf(System.currentTimeMillis());
+        dealId = String.valueOf(System.currentTimeMillis());
 
+        // get type of deal
         TextView typeTextView = view.findViewById(R.id.what_do_you_need_list);
         dealType = typeTextView.getText().toString();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
-        String clientId = user.getUid();
+        clientUid = user.getUid();
+
+        TextView textViewtest = view.findViewById(R.id.testTextView);
+        textViewtest.setText("sdfsdfsdf");
 
         // Default value of helper is * (empty). Will be updated when deal will be
         // accepted by any helper
-        String helperId = "*";
+        helperUid = "*";
 
 
-        // Get Client City
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("users/" + clientId);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Person personClient = snapshot.getValue(Person.class);
-                assert personClient != null;
-                city = personClient.city;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-
-        Deal deal = new Deal(dealId, dealType, clientId, helperId, city,
+        Deal deal = new Deal(city, dealId, dealType, clientUid, helperUid,
                 "test", "test",
                 true, true, "Comments");
-        databaseReference = firebaseDatabase.getReference("deals").child(deal.dealID);
+        DatabaseReference databaseReference = firebaseDatabase.getReference("deals").child(deal.dealID);
 
         databaseReference.setValue(deal);
 
+
+    }
+
+    public void setCurrentClientCity()
+    {
+//        DatabaseReference mDatabase = FirebaseDatabase.getInstance().
+//                getReference().child("users").child(clientUid);
+
+//        mDatabase.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Person person = snapshot.getValue(Person.class);
+//                city = person.city;
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
     }
 
