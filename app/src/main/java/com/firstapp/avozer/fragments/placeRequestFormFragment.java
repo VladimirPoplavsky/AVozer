@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
+import java.util.Date;
 import java.util.Locale;
 
 /**
@@ -154,11 +155,15 @@ public class placeRequestFormFragment extends Fragment {
         // accepted by any helper
         helperUid = "*";
 
+        long milliseconds = System.currentTimeMillis();
+        Date date = new Date(milliseconds);
+        timeCreated = date.toString();
+
 
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         Deal deal = new Deal(clientCity, dealId, dealType, clientUid, helperUid,
-                "test", "test",
+                timeCreated, "test",
                 true, true, "Comments");
         DatabaseReference databaseReference = firebaseDatabase.getReference("deals").child(deal.dealID);
 

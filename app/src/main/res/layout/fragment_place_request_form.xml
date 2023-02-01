@@ -25,13 +25,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/baseline_emoji_people_24">
 
-        <TextView
-            android:id="@+id/textView2_test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-
         <AutoCompleteTextView
             android:id="@+id/what_do_you_need_list"
             android:layout_width="match_parent"
