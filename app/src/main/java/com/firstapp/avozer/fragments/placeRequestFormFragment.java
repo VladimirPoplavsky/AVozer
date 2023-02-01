@@ -14,11 +14,17 @@ import android.widget.TimePicker;
 import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.Deal;
+import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.Locale;
 
@@ -37,7 +43,8 @@ public class placeRequestFormFragment extends Fragment {
     public String dealType;
     public String clientUid;
     public String helperUid;
-    public String city;
+    public String clientCity;
+
     public String timeCreated;
     public String whenNeedHelp;
     public boolean helperIsFound;
@@ -93,8 +100,8 @@ public class placeRequestFormFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_place_request_form, container, false);;
 
-        setCurrentClientCity();
-
+        // Get current user city
+        setCurrentClientCity(view);
 
         //Drop-down menu (select type: babysitter, dog walker, cleaner)
         String[] ways_to_help = getResources().getStringArray(R.array.ways_to_help);
@@ -137,16 +144,11 @@ public class placeRequestFormFragment extends Fragment {
          */
         dealId = String.valueOf(System.currentTimeMillis());
 
+
         // get type of deal
         TextView typeTextView = view.findViewById(R.id.what_do_you_need_list);
         dealType = typeTextView.getText().toString();
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        assert user != null;
-        clientUid = user.getUid();
-
-        TextView textViewtest = view.findViewById(R.id.testTextView);
-        textViewtest.setText("sdfsdfsdf");
 
         // Default value of helper is * (empty). Will be updated when deal will be
         // accepted by any helper
@@ -155,7 +157,7 @@ public class placeRequestFormFragment extends Fragment {
 
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        Deal deal = new Deal(city, dealId, dealType, clientUid, helperUid,
+        Deal deal = new Deal(clientCity, dealId, dealType, clientUid, helperUid,
                 "test", "test",
                 true, true, "Comments");
         DatabaseReference databaseReference = firebaseDatabase.getReference("deals").child(deal.dealID);
@@ -165,25 +167,30 @@ public class placeRequestFormFragment extends Fragment {
 
     }
 
-    public void setCurrentClientCity()
+    public void setCurrentClientCity(View view)
     {
-//        DatabaseReference mDatabase = FirebaseDatabase.getInstance().
-//                getReference().child("users").child(clientUid);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        clientUid = user.getUid();
 
-//        mDatabase.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Person person = snapshot.getValue(Person.class);
-//                city = person.city;
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().
+                getReference().child("users").child(clientUid);
 
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Person person = snapshot.getValue(Person.class);
+                clientCity = person.city;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
 
     public void pickTime(Button timeButton, View view){
         TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {

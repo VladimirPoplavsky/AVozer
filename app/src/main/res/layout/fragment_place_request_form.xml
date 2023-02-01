@@ -26,7 +26,7 @@
         app:startIconDrawable="@drawable/baseline_emoji_people_24">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView2_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
