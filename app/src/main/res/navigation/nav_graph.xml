@@ -79,10 +79,23 @@
         android:id="@+id/placeRequestFormFragment"
         android:name="com.firstapp.avozer.fragments.placeRequestFormFragment"
         android:label="fragment_place_request_form"
-        tools:layout="@layout/fragment_place_request_form" />
+        tools:layout="@layout/fragment_place_request_form" >
+        <action
+            android:id="@+id/action_placeRequestFormFragment_to_requestIsPublished"
+            app:destination="@id/requestIsPublished" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPassFragment"
         android:name="com.firstapp.avozer.fragments.ForgotPassFragment"
         android:label="fragment_forgot_pass"
         tools:layout="@layout/fragment_forgot_pass" />
+    <fragment
+        android:id="@+id/requestIsPublished"
+        android:name="com.firstapp.avozer.fragments.requestIsPublished"
+        android:label="fragment_request_is_published"
+        tools:layout="@layout/fragment_request_is_published" >
+        <action
+            android:id="@+id/action_requestIsPublished_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>
