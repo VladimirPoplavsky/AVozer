@@ -94,7 +94,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
-            android:background="#30F45757"
+            android:background="#AADFDA"
             android:drawableLeft="@drawable/baseline_comment_24"
             android:drawablePadding="20dp"
             android:inputType="textMultiLine"
@@ -102,7 +102,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:ems="10"
-            android:hint="Comments"/>
+            android:hint="Please describe in detail"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
