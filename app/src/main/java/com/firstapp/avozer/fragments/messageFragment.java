@@ -10,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import com.firstapp.avozer.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link Fragment} subclass.gfdgdf
  * Use the {@link messageFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
