@@ -1,6 +1,8 @@
 package com.firstapp.avozer.fragments;
 
 import android.app.TimePickerDialog;
+import android.icu.text.DateFormat;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,8 +50,7 @@ public class placeRequestFormFragment extends Fragment {
 
     public String timeCreated;
     public String whenNeedHelp;
-    public boolean helperIsFound;
-    public boolean dealIsDone;
+
     public String comments;
 
 
@@ -155,16 +156,21 @@ public class placeRequestFormFragment extends Fragment {
         // accepted by any helper
         helperUid = "*";
 
+
+        // Time when offer was created
         long milliseconds = System.currentTimeMillis();
+        DateFormat simple = new SimpleDateFormat(
+                "dd/MM/yyyy HH:mm:ss");
         Date date = new Date(milliseconds);
-        timeCreated = date.toString();
+        timeCreated = simple.format(date);
+
 
 
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         Deal deal = new Deal(clientCity, dealId, dealType, clientUid, helperUid,
                 timeCreated, "test",
-                true, true, "Comments");
+                false, false, "Some Comments");
         DatabaseReference databaseReference = firebaseDatabase.getReference("deals").child(deal.dealID);
 
         databaseReference.setValue(deal);
