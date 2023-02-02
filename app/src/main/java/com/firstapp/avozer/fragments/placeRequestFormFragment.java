@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -51,7 +53,7 @@ public class placeRequestFormFragment extends Fragment {
     public String timeCreated;
     public String whenNeedHelp;
 
-    public String comments;
+    public String comment;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -124,7 +126,6 @@ public class placeRequestFormFragment extends Fragment {
         //End time picker
 
 
-
         //Save and publish request
         Button saveAndPublishBtn = view.findViewById(R.id.save_request_btn);
         saveAndPublishBtn.setOnClickListener(new View.OnClickListener() {
@@ -165,12 +166,26 @@ public class placeRequestFormFragment extends Fragment {
         timeCreated = simple.format(date);
 
 
+        // Time when need a help
+        DatePicker dealDate = view.findViewById(R.id.datePicker);
+        String day, month, year;
+        day = String.valueOf(dealDate.getDayOfMonth());
+        month = String.valueOf(dealDate.getMonth() + 1);
+        year = String.valueOf(dealDate.getYear());
+
+        whenNeedHelp = day + "/" + month + "/" + year + " " + hour + ":" + minute;
+
+
+        // Get user comment
+        EditText userComment = view.findViewById(R.id.dealComment);
+        comment = userComment.getText().toString();
+
 
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         Deal deal = new Deal(clientCity, dealId, dealType, clientUid, helperUid,
-                timeCreated, "test",
-                false, false, "Some Comments");
+                timeCreated, whenNeedHelp,
+                false, false, comment);
         DatabaseReference databaseReference = firebaseDatabase.getReference("deals").child(deal.dealID);
 
         databaseReference.setValue(deal);
