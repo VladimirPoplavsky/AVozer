@@ -16,9 +16,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     Context context;
 
 
-    ArrayList<DealsToShowFromDB> list1;
+    ArrayList<Deal> list1;
 
-    public AdapterClass(Context context, ArrayList<DealsToShowFromDB> list1) {
+    public AdapterClass(Context context, ArrayList<Deal> list1) {
         this.context = context;
         this.list1 = list1;
     }
@@ -34,11 +34,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        DealsToShowFromDB dealsToShowFromDB = list1.get(position);
-        holder.jobType.setText(dealsToShowFromDB.getJobType());
-        holder.city.setText(dealsToShowFromDB.getCity());
-        holder.when.setText(dealsToShowFromDB.getWhen());
-        holder.comments.setText(dealsToShowFromDB.getComments());
+        Deal dealsToShowFromDB = list1.get(position);
+        holder.jobType.setText(dealsToShowFromDB.type);
+        holder.city.setText(dealsToShowFromDB.city);
+        holder.when.setText(dealsToShowFromDB.whenNeedHelp);
+        holder.comments.setText(dealsToShowFromDB.comments);
 
     }
 
