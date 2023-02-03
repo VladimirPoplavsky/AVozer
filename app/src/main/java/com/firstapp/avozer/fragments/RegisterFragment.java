@@ -235,7 +235,7 @@ public class RegisterFragment extends Fragment {
     public void writeDB(String id, String uid, String firstName, String lastName, String email, String phone, String city) {
         // Write a message to the database        
         
-        Person p = new Person(id, uid, firstName, lastName, email, phone, city);
+        Person p = new Person(id, uid, firstName, lastName, email, phone, city, "");
 
 
         database = FirebaseDatabase.getInstance();

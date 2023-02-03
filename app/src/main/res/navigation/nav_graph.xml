@@ -69,7 +69,11 @@
         android:id="@+id/idVerificationFragment"
         android:name="com.firstapp.avozer.fragments.idVerificationFragment"
         android:label="fragment_id_verification"
-        tools:layout="@layout/fragment_id_verification" />
+        tools:layout="@layout/fragment_id_verification" >
+        <action
+            android:id="@+id/action_idVerificationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/findRequestFormFragment"
         android:name="com.firstapp.avozer.fragments.findRequestFormFragment"
