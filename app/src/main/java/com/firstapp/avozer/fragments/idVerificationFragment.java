@@ -25,6 +25,7 @@ import androidx.navigation.Navigation;
 import com.firstapp.avozer.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -189,7 +190,6 @@ public class idVerificationFragment extends Fragment {
                             }, 500);
 
                             Toast.makeText(getActivity(), "Upload successful", Toast.LENGTH_LONG).show();
-                            String uploadId = mDatabaseRef.push().getKey();
 
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             assert user != null;
@@ -200,8 +200,18 @@ public class idVerificationFragment extends Fragment {
                             mDatabaseRef = database.getReference("users").
                                     child(userUid).child("idVerificationPicture");
 
-                            mDatabaseRef.setValue(taskSnapshot.getMetadata().getReference().getDownloadUrl().toString()
-                            );
+
+                            Task<Uri> task = taskSnapshot.getMetadata().getReference().getDownloadUrl();
+                            task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String photoLink = uri.toString();
+                                    mDatabaseRef.setValue(photoLink);
+
+                                }
+                            });
+
+
 
                             Navigation.findNavController(view).
                                     navigate(R.id.action_idVerificationFragment_to_profileFragment);
