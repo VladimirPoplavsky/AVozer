@@ -106,6 +106,9 @@ public class ForgotPassFragment extends Fragment {
                     Toast.makeText(getActivity(), "mail has been sent", Toast.LENGTH_SHORT).show();
 
                 }
+                else {
+                    Toast.makeText(getActivity(), "your mail does not exist", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });

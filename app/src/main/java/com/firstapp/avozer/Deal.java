@@ -1,7 +1,5 @@
 package com.firstapp.avozer;
 
-import java.time.format.DateTimeFormatter;
-
 public class Deal {
     public String dealID;
     public String type;
@@ -29,4 +27,6 @@ public class Deal {
         this.dealIsDone = dealIsDone;
         this.comments = comments;
     }
+
+    public Deal(){}
 }
