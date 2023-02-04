@@ -21,7 +21,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public AdapterClass(Context context, ArrayList<Deal> list1) {
         this.context = context;
         this.list1 = list1;
-        //
+
     }
 
     @NonNull
@@ -41,6 +41,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         holder.when.setText(dealsToShowFromDB.whenNeedHelp);
         holder.comments.setText(dealsToShowFromDB.comments);
 
+        if (dealsToShowFromDB.isExpanded()){
+            holder.expandedView.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.expandedView.setVisibility(View.VISIBLE);
+        }
+
+
     }
 
     @Override
@@ -48,9 +56,10 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         return list1.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public  class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView jobType, city, when, comments;
+        View expandedView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -58,6 +67,17 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             city = itemView.findViewById(R.id.cityNameCV);
             when = itemView.findViewById(R.id.whenCV);
             comments = itemView.findViewById(R.id.commentCV);
+            expandedView = itemView.findViewById(R.id.expandButton);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Deal deal = list1.get(getAdapterPosition());
+                    deal.setExpanded(!deal.isExpanded());
+
+
+
+                }
+            });
 
         }
     }
