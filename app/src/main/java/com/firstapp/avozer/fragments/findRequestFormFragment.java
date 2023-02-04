@@ -105,6 +105,8 @@ public class findRequestFormFragment extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     list.add(dataSnapshot.getValue(Deal.class));
                 }
+
+
                 adapterClass.notifyDataSetChanged();
             }
 

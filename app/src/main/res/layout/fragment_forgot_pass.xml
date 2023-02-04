@@ -28,7 +28,7 @@
 
         android:layout_marginBottom="96dp"
         android:layout_gravity="bottom"
-        android:background="@color/lightgrey"
+        android:backgroundTint="@color/design_default_color_secondary"
 
         android:text="reset now" />
 
