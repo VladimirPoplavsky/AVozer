@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,7 +47,6 @@ public class idVerificationFragment extends Fragment {
 
     private Button mButtonChooseImage;
     private Button mButtonUpload;
-    private TextView mTextViewShowUploads;
     private EditText mEditTextFileName;
     private ImageView mImageView;
     private ProgressBar mProgressBar;
@@ -113,8 +111,6 @@ public class idVerificationFragment extends Fragment {
 
         mButtonChooseImage = view.findViewById(R.id.button_choose_image);
         mButtonUpload = view.findViewById(R.id.button_upload);
-        mTextViewShowUploads = view.findViewById(R.id.text_view_show_uploads);
-        mEditTextFileName = view.findViewById(R.id.edit_text_file_name);
         mImageView = view.findViewById(R.id.image_view);
         mProgressBar = view.findViewById(R.id.progress_bar);
 
@@ -134,14 +130,6 @@ public class idVerificationFragment extends Fragment {
                 uploadFile(view);
             }
         });
-
-        mTextViewShowUploads.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
 
 
         return view;
