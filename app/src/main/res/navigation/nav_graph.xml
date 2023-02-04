@@ -20,20 +20,23 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_messageFragment"
-            app:destination="@id/messageFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_settingssFragmento"
             app:destination="@id/settingssFragmento" />
-        <action
-            android:id="@+id/action_profileFragment_to_homeyFragmentage"
-            app:destination="@id/homeyFragmentage" />
         <action
             android:id="@+id/action_profileFragment_to_placeRequestFormFragment"
             app:destination="@id/placeRequestFormFragment" />
         <action
             android:id="@+id/action_profileFragment_to_findRequestFormFragment"
             app:destination="@id/findRequestFormFragment" />
+        <action
+            android:id="@+id/action_profileFragment_self"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myHelpRequests"
+            app:destination="@id/myHelpRequests" />
+        <action
+            android:id="@+id/action_profileFragment_to_requestsThatIRespondedFragment"
+            app:destination="@id/requestsThatIRespondedFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -50,16 +53,6 @@
             android:id="@+id/action_loginFragment_to_forgotPassFragment"
             app:destination="@id/forgotPassFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/homeyFragmentage"
-        android:name="com.firstapp.avozer.fragments.HomeyFragmentage"
-        android:label="fragment_homey_fragmentage"
-        tools:layout="@layout/fragment_homey_fragmentage" />
-    <fragment
-        android:id="@+id/messageFragment"
-        android:name="com.firstapp.avozer.fragments.messageFragment"
-        android:label="fragment_message"
-        tools:layout="@layout/fragment_message" />
     <fragment
         android:id="@+id/settingssFragmento"
         android:name="com.firstapp.avozer.fragments.SettingssFragmento"
@@ -102,4 +95,14 @@
             android:id="@+id/action_requestIsPublished_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/myHelpRequests"
+        android:name="com.firstapp.avozer.fragments.MyHelpRequests"
+        android:label="fragment_my_help_requests"
+        tools:layout="@layout/fragment_my_help_requests" />
+    <fragment
+        android:id="@+id/requestsThatIRespondedFragment"
+        android:name="com.firstapp.avozer.fragments.RequestsThatIRespondedFragment"
+        android:label="fragment_requests_that_i_responded"
+        tools:layout="@layout/fragment_requests_that_i_responded" />
 </navigation>

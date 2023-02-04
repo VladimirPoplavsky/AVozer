@@ -11,10 +11,10 @@ import com.firstapp.avozer.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HomeyFragmentage#newInstance} factory method to
+ * Use the {@link MyHelpRequests#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeyFragmentage extends Fragment {
+public class MyHelpRequests extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +25,7 @@ public class HomeyFragmentage extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public HomeyFragmentage() {
+    public MyHelpRequests() {
         // Required empty public constructor
     }
 
@@ -38,8 +38,8 @@ public class HomeyFragmentage extends Fragment {
      * @return A new instance of fragment HomeyFragmentage.
      */
     // TODO: Rename and change types and number of parameters
-    public static HomeyFragmentage newInstance(String param1, String param2) {
-        HomeyFragmentage fragment = new HomeyFragmentage();
+    public static MyHelpRequests newInstance(String param1, String param2) {
+        MyHelpRequests fragment = new MyHelpRequests();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,6 +60,6 @@ public class HomeyFragmentage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_homey_fragmentage, container, false);
+        return inflater.inflate(R.layout.fragment_my_help_requests, container, false);
     }
 }

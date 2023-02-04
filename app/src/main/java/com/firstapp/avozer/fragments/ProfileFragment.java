@@ -15,13 +15,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.firstapp.avozer.Deal;
-import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -103,18 +99,16 @@ public class ProfileFragment extends Fragment {
                 {
 
                     case R.id.nav_home:
-                        Toast.makeText(getActivity(), "Home is Clicked", Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeyFragmentage);
+                        Toast.makeText(getActivity(), "Home Page", Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_self);
                         break;
-                    case R.id.nav_message:
-                        Toast.makeText(getActivity(), "Message is Clicked",Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_messageFragment);
+                    case R.id.nav_my_help_requests:
+                        Toast.makeText(getActivity(), "My help requests",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_myHelpRequests);
                         break;
-
-
-                    case R.id.settings:
-                        Toast.makeText(getActivity(), "loadinG",Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_settingssFragmento);
+                    case R.id.requests_that_i_responded:
+                        Toast.makeText(getActivity(), "Requests where I help",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_requestsThatIRespondedFragment);
                         break;
                     case R.id.nav_login:
                         Toast.makeText(getActivity(), "loadin2g",Toast.LENGTH_SHORT).show();break;
