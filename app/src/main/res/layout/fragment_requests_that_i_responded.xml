@@ -13,6 +13,6 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="50dp"
-        android:text="Hello vladik messageeee" />
+        android:text="Requests That I Responded" />
 
 </FrameLayout>

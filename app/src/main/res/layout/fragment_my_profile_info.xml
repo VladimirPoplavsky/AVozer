@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_200"
-    tools:context=".fragments.SettingssFragmento">
+    tools:context=".fragments.MyProfileInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -13,5 +13,5 @@
         android:gravity="center"
         android:textColor="@color/black"
         android:textSize="50dp"
-        android:text="Hello vladik poplovsky settings" />
+        android:text="My profile" />
 </FrameLayout>

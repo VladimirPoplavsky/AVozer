@@ -110,8 +110,16 @@ public class ProfileFragment extends Fragment {
                         Toast.makeText(getActivity(), "Requests where I help",Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_requestsThatIRespondedFragment);
                         break;
-                    case R.id.nav_login:
-                        Toast.makeText(getActivity(), "loadin2g",Toast.LENGTH_SHORT).show();break;
+                    case R.id.nav_info:
+                        Toast.makeText(getActivity(), "My Account Info",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_myProfileInfoFragment);
+                        break;
+                    case R.id.nav_logout:
+                        Toast.makeText(getActivity(), "Logout",Toast.LENGTH_SHORT).show();
+
+                        break;
+
+
 
 
                     default:

@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="My Help Requests"
         android:textColor="@color/black"
-        android:textSize="50dp"
-        android:text="Hello vladik poplovsky" />
+        android:textSize="50dp" />
 
 </FrameLayout>
