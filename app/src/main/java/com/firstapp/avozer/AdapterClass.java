@@ -22,6 +22,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
     ArrayList<Deal> list1;
 
+    Deal dealsToShowFromDB;
+
     public AdapterClass(Context context, ArrayList<Deal> list1) {
         this.context = context;
         this.list1 = list1;
@@ -59,7 +61,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        Deal dealsToShowFromDB = list1.get(position);
+        dealsToShowFromDB = list1.get(position);
         holder.jobType.setText(dealsToShowFromDB.type);
         holder.city.setText(dealsToShowFromDB.city);
         holder.when.setText(dealsToShowFromDB.whenNeedHelp);
@@ -86,7 +88,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             city = itemView.findViewById(R.id.cityNameCV);
             when = itemView.findViewById(R.id.whenCV);
             comments = itemView.findViewById(R.id.commentCV);
-
 
 
 
