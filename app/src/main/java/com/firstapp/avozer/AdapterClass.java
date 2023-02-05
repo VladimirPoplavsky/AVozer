@@ -24,6 +24,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
     Deal dealsToShowFromDB;
 
+    public static int selectedPosition;
+
     public AdapterClass(Context context, ArrayList<Deal> list1) {
         this.context = context;
         this.list1 = list1;
@@ -37,10 +39,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent ,false);
         //working on the details screen from this and below !!!
         publicView = view;
-        CardView card_View = view.findViewById(R.id.cardView);
-        card_View.setOnClickListener(new View.OnClickListener() {
+        CardView cardView = view.findViewById(R.id.cardView);
+        cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Bundle bundle = new Bundle();
                 TextView jobType = view.findViewById(R.id.jobTypeCV);
                 TextView comments = view.findViewById(R.id.commentCV);

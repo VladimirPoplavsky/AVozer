@@ -15,11 +15,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.firstapp.avozer.Deal;
 import com.firstapp.avozer.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +34,11 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+    // List to collect all help requests
+    public static ArrayList<Deal> list;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -154,6 +166,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        getRequests(view);
+
 
 
 
@@ -161,8 +175,23 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void replaceFragment(Fragment fragment){
+    private void getRequests(View view) {
+        list = new ArrayList<Deal>();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().
+                child("deals");
 
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    list.add(dataSnapshot.getValue(Deal.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
-
 }

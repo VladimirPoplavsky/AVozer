@@ -5,10 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.firstapp.avozer.AdapterClass;
 import com.firstapp.avozer.R;
 
 /**
@@ -63,6 +65,12 @@ public class DealDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_deal_details, container, false);
+        TextView type = view.findViewById(R.id.work_type_detail_find);
+
+        // test
+        type.setText(ProfileFragment.list.get(AdapterClass.selectedPosition).type);
+
+        //end test
 
 
         Button backToListButton = view.findViewById(R.id.buttonBackToList);
