@@ -78,7 +78,11 @@
         android:id="@+id/findRequestFormFragment"
         android:name="com.firstapp.avozer.fragments.findRequestFormFragment"
         android:label="fragment_find_request_form"
-        tools:layout="@layout/fragment_find_request_form" />
+        tools:layout="@layout/fragment_find_request_form" >
+        <action
+            android:id="@+id/action_findRequestFormFragment_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/placeRequestFormFragment"
         android:name="com.firstapp.avozer.fragments.placeRequestFormFragment"
@@ -101,5 +105,14 @@
         <action
             android:id="@+id/action_requestIsPublished_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dealDetailsFragment"
+        android:name="com.firstapp.avozer.fragments.DealDetailsFragment"
+        android:label="fragment_deal_details"
+        tools:layout="@layout/fragment_deal_details" >
+        <action
+            android:id="@+id/action_dealDetailsFragment_to_findRequestFormFragment"
+            app:destination="@id/findRequestFormFragment" />
     </fragment>
 </navigation>

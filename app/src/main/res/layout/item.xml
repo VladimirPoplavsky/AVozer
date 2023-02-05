@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -87,13 +88,7 @@
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
-            <ImageButton
-                android:id="@+id/expandButton"
-                android:layout_width="82dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="48dp"
-                android:contentDescription="expand"
-                android:src="@drawable/ic_expand_more_black_24dp" />
+
 
 
         </LinearLayout>
