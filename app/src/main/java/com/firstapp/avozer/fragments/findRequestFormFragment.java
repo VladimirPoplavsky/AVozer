@@ -106,7 +106,6 @@ public class findRequestFormFragment extends Fragment {
                     list.add(dataSnapshot.getValue(Deal.class));
                 }
 
-
                 adapterClass.notifyDataSetChanged();
             }
 

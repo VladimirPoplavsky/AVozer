@@ -12,6 +12,8 @@ public class Deal {
     public boolean dealIsDone;
     public String comments;
 
+    public boolean isExpanded = false;
+
 
     public Deal(String city, String dealID, String type, String clientUid, String helperUid,
                 String timeCreated, String whenNeedHelp,
@@ -28,5 +30,13 @@ public class Deal {
         this.comments = comments;
     }
 
+
     public Deal(){}
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+    public void  setExpanded(boolean expanded){
+        isExpanded=expanded;
+    }
 }
