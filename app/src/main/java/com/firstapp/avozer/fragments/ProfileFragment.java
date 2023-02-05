@@ -18,6 +18,8 @@ import androidx.navigation.Navigation;
 import com.firstapp.avozer.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -116,6 +118,8 @@ public class ProfileFragment extends Fragment {
                         break;
                     case R.id.nav_logout:
                         Toast.makeText(getActivity(), "Logout",Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_loginFragment);
 
                         break;
 
