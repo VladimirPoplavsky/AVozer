@@ -1,7 +1,5 @@
 package com.firstapp.avozer;
 
-import java.time.format.DateTimeFormatter;
-
 public class Deal {
     public String dealID;
     public String type;
@@ -13,6 +11,8 @@ public class Deal {
     public boolean helperIsFound;
     public boolean dealIsDone;
     public String comments;
+
+    public boolean isExpanded = false;
 
 
     public Deal(String city, String dealID, String type, String clientUid, String helperUid,
@@ -28,5 +28,15 @@ public class Deal {
         this.helperIsFound = helperIsFound;
         this.dealIsDone = dealIsDone;
         this.comments = comments;
+    }
+
+
+    public Deal(){}
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+    public void  setExpanded(boolean expanded){
+        isExpanded=expanded;
     }
 }

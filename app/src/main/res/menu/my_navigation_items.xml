@@ -10,13 +10,13 @@
         android:icon="@drawable/baseline_home_24"
         android:title="Home" />
         <item
-            android:id="@+id/nav_message"
-            android:icon="@drawable/baseline_message_24"
-            android:title="my orders" />
+            android:id="@+id/nav_my_help_requests"
+            android:icon="@drawable/baseline_emoji_people_24"
+            android:title="My help requests" />
         <item
-            android:id="@+id/settings"
-            android:icon="@drawable/baseline_settings_24"
-            android:title="my jobs" />
+            android:id="@+id/requests_that_i_responded"
+            android:icon="@drawable/baseline_handshake_24"
+            android:title="Requests that I responded" />
     </group>
 
 
@@ -26,10 +26,10 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_info"
-                    android:icon="@drawable/baseline_login_24"
-                    android:title="my info" />
+                    android:icon="@drawable/baseline_person_24"
+                    android:title="My Profile" />
                 <item
-                    android:id="@+id/nav_login"
+                    android:id="@+id/nav_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:icon="@drawable/baseline_login_24"

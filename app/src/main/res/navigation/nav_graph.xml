@@ -20,20 +20,26 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_profileFragment_to_messageFragment"
-            app:destination="@id/messageFragment" />
-        <action
-            android:id="@+id/action_profileFragment_to_settingssFragmento"
-            app:destination="@id/settingssFragmento" />
-        <action
-            android:id="@+id/action_profileFragment_to_homeyFragmentage"
-            app:destination="@id/homeyFragmentage" />
-        <action
             android:id="@+id/action_profileFragment_to_placeRequestFormFragment"
             app:destination="@id/placeRequestFormFragment" />
         <action
             android:id="@+id/action_profileFragment_to_findRequestFormFragment"
             app:destination="@id/findRequestFormFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myHelpRequests"
+            app:destination="@id/myHelpRequests" />
+        <action
+            android:id="@+id/action_profileFragment_to_requestsThatIRespondedFragment"
+            app:destination="@id/requestsThatIRespondedFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myProfileInfoFragment"
+            app:destination="@id/myProfileInfoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_self"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -51,38 +57,68 @@
             app:destination="@id/forgotPassFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeyFragmentage"
-        android:name="com.firstapp.avozer.fragments.HomeyFragmentage"
-        android:label="fragment_homey_fragmentage"
-        tools:layout="@layout/fragment_homey_fragmentage" />
-    <fragment
-        android:id="@+id/messageFragment"
-        android:name="com.firstapp.avozer.fragments.messageFragment"
-        android:label="fragment_message"
-        tools:layout="@layout/fragment_message" />
-    <fragment
-        android:id="@+id/settingssFragmento"
-        android:name="com.firstapp.avozer.fragments.SettingssFragmento"
-        android:label="fragment_settingss_fragmento"
-        tools:layout="@layout/fragment_settingss_fragmento" />
-    <fragment
         android:id="@+id/idVerificationFragment"
         android:name="com.firstapp.avozer.fragments.idVerificationFragment"
         android:label="fragment_id_verification"
-        tools:layout="@layout/fragment_id_verification" />
+        tools:layout="@layout/fragment_id_verification" >
+        <action
+            android:id="@+id/action_idVerificationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/findRequestFormFragment"
         android:name="com.firstapp.avozer.fragments.findRequestFormFragment"
         android:label="fragment_find_request_form"
-        tools:layout="@layout/fragment_find_request_form" />
+        tools:layout="@layout/fragment_find_request_form" >
+        <action
+            android:id="@+id/action_findRequestFormFragment_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/placeRequestFormFragment"
         android:name="com.firstapp.avozer.fragments.placeRequestFormFragment"
         android:label="fragment_place_request_form"
-        tools:layout="@layout/fragment_place_request_form" />
+        tools:layout="@layout/fragment_place_request_form" >
+        <action
+            android:id="@+id/action_placeRequestFormFragment_to_requestIsPublished"
+            app:destination="@id/requestIsPublished" />
+    </fragment>
     <fragment
         android:id="@+id/forgotPassFragment"
         android:name="com.firstapp.avozer.fragments.ForgotPassFragment"
         android:label="fragment_forgot_pass"
         tools:layout="@layout/fragment_forgot_pass" />
+    <fragment
+        android:id="@+id/requestIsPublished"
+        android:name="com.firstapp.avozer.fragments.requestIsPublished"
+        android:label="fragment_request_is_published"
+        tools:layout="@layout/fragment_request_is_published" >
+        <action
+            android:id="@+id/action_requestIsPublished_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dealDetailsFragment"
+        android:name="com.firstapp.avozer.fragments.DealDetailsFragment"
+        android:label="fragment_deal_details"
+        tools:layout="@layout/fragment_deal_details" >
+        <action
+            android:id="@+id/action_dealDetailsFragment_to_findRequestFormFragment"
+            app:destination="@id/findRequestFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myHelpRequests"
+        android:name="com.firstapp.avozer.fragments.MyHelpRequests"
+        android:label="fragment_my_help_requests"
+        tools:layout="@layout/fragment_my_help_requests" />
+    <fragment
+        android:id="@+id/requestsThatIRespondedFragment"
+        android:name="com.firstapp.avozer.fragments.RequestsThatIRespondedFragment"
+        android:label="fragment_requests_that_i_responded"
+        tools:layout="@layout/fragment_requests_that_i_responded" />
+    <fragment
+        android:id="@+id/myProfileInfoFragment"
+        android:name="com.firstapp.avozer.fragments.MyProfileInfoFragment"
+        android:label="fragment_my_profile_info"
+        tools:layout="@layout/fragment_my_profile_info" />
 </navigation>

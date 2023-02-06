@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.Deal;
 import com.firstapp.avozer.Person;
@@ -132,6 +133,8 @@ public class placeRequestFormFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 saveRequest(view);
+                Navigation.findNavController(view).
+                        navigate(R.id.action_placeRequestFormFragment_to_requestIsPublished);
             }
         });
 

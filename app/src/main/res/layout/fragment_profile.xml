@@ -21,7 +21,7 @@
                 android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:title="AVOozer"
+                app:title="AVozer"
                 app:navigationIcon="@drawable/baseline_menu_24"
                 android:background="@color/white"
                 />

@@ -16,12 +16,17 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.Deal;
-import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +34,11 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+    // List to collect all help requests
+    public static ArrayList<Deal> list;
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -103,21 +113,29 @@ public class ProfileFragment extends Fragment {
                 {
 
                     case R.id.nav_home:
-                        Toast.makeText(getActivity(), "Home is Clicked", Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_homeyFragmentage);
+                        Toast.makeText(getActivity(), "Home Page", Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_self);
                         break;
-                    case R.id.nav_message:
-                        Toast.makeText(getActivity(), "Message is Clicked",Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_messageFragment);
+                    case R.id.nav_my_help_requests:
+                        Toast.makeText(getActivity(), "My help requests",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_myHelpRequests);
+                        break;
+                    case R.id.requests_that_i_responded:
+                        Toast.makeText(getActivity(), "Requests where I help",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_requestsThatIRespondedFragment);
+                        break;
+                    case R.id.nav_info:
+                        Toast.makeText(getActivity(), "My Account Info",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_myProfileInfoFragment);
+                        break;
+                    case R.id.nav_logout:
+                        Toast.makeText(getActivity(), "Logout",Toast.LENGTH_SHORT).show();
+                        FirebaseAuth.getInstance().signOut();
+                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_loginFragment);
+
                         break;
 
 
-                    case R.id.settings:
-                        Toast.makeText(getActivity(), "loadinG",Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.action_profileFragment_to_settingssFragmento);
-                        break;
-                    case R.id.nav_login:
-                        Toast.makeText(getActivity(), "loadin2g",Toast.LENGTH_SHORT).show();break;
 
 
                     default:
@@ -148,6 +166,8 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        getRequests(view);
+
 
 
 
@@ -155,8 +175,23 @@ public class ProfileFragment extends Fragment {
 
     }
 
-    private void replaceFragment(Fragment fragment){
+    private void getRequests(View view) {
+        list = new ArrayList<Deal>();
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().
+                child("deals");
 
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    list.add(dataSnapshot.getValue(Deal.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
-
 }

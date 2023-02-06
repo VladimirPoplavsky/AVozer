@@ -87,7 +87,9 @@
         android:text="Forgot Password?"
         android:layout_below="@id/registerBtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="96dp"/>
+        android:layout_marginTop="96dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        />
 
 
 
