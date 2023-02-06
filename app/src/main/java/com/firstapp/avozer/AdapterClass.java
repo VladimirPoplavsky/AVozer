@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentManager;
+import androidx.navigation;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,36 +31,48 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public AdapterClass(Context context, ArrayList<Deal> list1) {
         this.context = context;
         this.list1 = list1;
-
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent ,false);
-        //working on the details screen from this and below !!!
-        publicView = view;
-        CardView cardView = view.findViewById(R.id.cardView);
-        cardView.setOnClickListener(new View.OnClickListener() {
+        final View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Bundle bundle = new Bundle();
                 TextView jobType = view.findViewById(R.id.jobTypeCV);
                 TextView comments = view.findViewById(R.id.commentCV);
                 System.out.println(jobType.getText().toString());
                 System.out.println(comments.getText().toString());
-                bundle.putString("jobeType",jobType.getText().toString());
-                Navigation.findNavController(view).navigate(R.id.action_findRequestFormFragment_to_dealDetailsFragment);
-
-
-
+                Bundle bundle = new Bundle();
+                bundle.putString("jobType", jobType.getText().toString());
+                bundle.putString("comments", comments.getText().toString());
+                FragmentManager manager = getActivity().getSupportFragmentManager();
+                Fragment fragment = manager.findFragmentById(
+                        R.id.action_findRequestFormFragment_to_dealDetailsFragment);
+                fragment.setArguments(bundle);
+                Navigation.findNavController(view).navigate(
+                        R.id.action_findRequestFormFragment_to_dealDetailsFragment);
             }
-        });
+        };
 
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent ,false);
+        //working on the details screen from this and below !!!
+        publicView = view;
+        CardView cardView = view.findViewById(R.id.cardView);
+        cardView.setOnClickListener(clickListener);
         return new MyViewHolder(view);
+    }
+
+    private Activity getActivity() {
+        Context context = getContext();
+        while (context instanceof ContextWrapper) {
+            if (context instanceof Activity) {
+                return (Activity)context;
+            }
+            context = ((ContextWrapper)context).getBaseContext();
+        }
+        return null;
     }
 
     @Override
