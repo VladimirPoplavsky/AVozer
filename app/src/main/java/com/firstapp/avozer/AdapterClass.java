@@ -16,6 +16,9 @@ import java.util.ArrayList;
 
 public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder> {
 
+    public static final String ARG1 = "jobeType";
+    public static final String ARG2 = "comment";
+
     Context context;
 
     View publicView;
@@ -40,22 +43,24 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         //working on the details screen from this and below !!!
         publicView = view;
         CardView cardView = view.findViewById(R.id.cardView);
-        cardView.setOnClickListener(new View.OnClickListener() {
+
+        final View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Bundle bundle = new Bundle();
                 TextView jobType = view.findViewById(R.id.jobTypeCV);
                 TextView comments = view.findViewById(R.id.commentCV);
                 System.out.println(jobType.getText().toString());
                 System.out.println(comments.getText().toString());
-                bundle.putString("jobeType",jobType.getText().toString());
-                Navigation.findNavController(view).navigate(R.id.action_findRequestFormFragment_to_dealDetailsFragment);
 
-
-
+                Bundle bundle = new Bundle();
+                bundle.putString(ARG1, jobType.getText().toString());
+                bundle.putString(ARG2, comments.getText().toString());
+                Navigation.findNavController(view).navigate(
+                        R.id.action_findRequestFormFragment_to_dealDetailsFragment, bundle);
             }
-        });
+        };
+
+        cardView.setOnClickListener(clickListener);
 
 
         return new MyViewHolder(view);
