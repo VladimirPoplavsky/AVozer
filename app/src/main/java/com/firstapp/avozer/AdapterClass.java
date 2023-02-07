@@ -19,6 +19,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public static final String ARG1 = "jobeType";
     public static final String ARG2 = "comment";
     public static final String ARG3 = "dateAndTime";
+    public static final String ARG4 = "city";
+    public static final String ARG5 = "clientId";
 
     Context context;
 
@@ -50,13 +52,17 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                 TextView jobType = view.findViewById(R.id.jobTypeCV);
                 TextView comments = view.findViewById(R.id.commentCV);
                 TextView when = view.findViewById(R.id.whenCV);
-                System.out.println(jobType.getText().toString());
-                System.out.println(comments.getText().toString());
+                TextView city = view.findViewById(R.id.cityNameCV);
+                TextView client = view.findViewById(R.id.clientIdCV);
+//                System.out.println(jobType.getText().toString());
+//                System.out.println(comments.getText().toString());
 
                 Bundle bundle = new Bundle();
                 bundle.putString(ARG1, jobType.getText().toString());
                 bundle.putString(ARG2, comments.getText().toString());
                 bundle.putString(ARG3, when.getText().toString());
+                bundle.putString(ARG4, city.getText().toString());
+                bundle.putString(ARG5, client.getText().toString());
                 Navigation.findNavController(view).navigate(
                         R.id.action_findRequestFormFragment_to_dealDetailsFragment, bundle);
             }
@@ -70,14 +76,12 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
         dealsToShowFromDB = list1.get(position);
         holder.jobType.setText(dealsToShowFromDB.type);
         holder.city.setText(dealsToShowFromDB.city);
         holder.when.setText(dealsToShowFromDB.whenNeedHelp);
         holder.comments.setText(dealsToShowFromDB.comments);
-
-
+        holder.clientId.setText(dealsToShowFromDB.clientUid);
     }
 
     @Override
@@ -88,6 +92,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public  class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView jobType, city, when, comments;
+        TextView clientId;
 
         CardView cardView;
 
@@ -98,8 +103,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             city = itemView.findViewById(R.id.cityNameCV);
             when = itemView.findViewById(R.id.whenCV);
             comments = itemView.findViewById(R.id.commentCV);
-
-
+            clientId = itemView.findViewById(R.id.clientIdCV);
 
         }
     }

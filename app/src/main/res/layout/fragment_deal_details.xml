@@ -50,14 +50,14 @@
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
-                    android:id="@+id/textViewVersion"
+                    android:id="@+id/city_detail_find"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
+                    android:text="City"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
 
-                    android:text="Job Description"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
                     android:id="@+id/date_and_time_detail_find"
@@ -68,6 +68,61 @@
 
                     android:text="Date And Time"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/textViewVersion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+
+                    android:text="Job Description"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+
+                <TextView
+                    android:id="@+id/first_name_detail_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+
+                    android:text="First name: "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/last_name_detail_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+
+                    android:text="Last name: "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+                <TextView
+                    android:id="@+id/phone_detail_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+
+                    android:text="Phone: "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+                <TextView
+                    android:id="@+id/email_detail_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+
+                    android:text="email: "
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
 
             </LinearLayout>
         </LinearLayout>
