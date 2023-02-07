@@ -4,19 +4,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firstapp.avozer.AdapterClass;
 import com.firstapp.avozer.R;
 
 /**
- * A simple {@link Fragment} subclass.gfdgdf
- * Use the {@link RequestsThatIRespondedFragment#newInstance} factory method to
+ * A simple {@link Fragment} subclass.
+ * Use the {@link RecentDealsResponded#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RequestsThatIRespondedFragment extends Fragment {
+public class RecentDealsResponded extends Fragment {
+
+    RecyclerView recyclerView;
+
+    AdapterClass adapterClass;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +33,7 @@ public class RequestsThatIRespondedFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public RequestsThatIRespondedFragment() {
+    public RecentDealsResponded() {
         // Required empty public constructor
     }
 
@@ -37,11 +43,11 @@ public class RequestsThatIRespondedFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RequestsThatIRespondedFragment.
+     * @return A new instance of fragment RecentDealsResponded.
      */
     // TODO: Rename and change types and number of parameters
-    public static RequestsThatIRespondedFragment newInstance(String param1, String param2) {
-        RequestsThatIRespondedFragment fragment = new RequestsThatIRespondedFragment();
+    public static RecentDealsResponded newInstance(String param1, String param2) {
+        RecentDealsResponded fragment = new RecentDealsResponded();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,26 +67,24 @@ public class RequestsThatIRespondedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_requests_that_i_responded, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_recent_deals_responded,
+                container, false);
 
-        Button upcomingDealsBtn = view.findViewById(R.id.upcoming_deals_i_responded);
-        Button recentDealsBtn = view.findViewById(R.id.recent_deals_i_responded);
-        upcomingDealsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.
-                        action_requestsThatIRespondedFragment_to_upcomingDealsResponded);
-            }
-        });
+        super.onViewCreated(view, savedInstanceState);
+//        dataInitialize();
+        ///////
+        recyclerView = view.findViewById(R.id.recyclerView);
+
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+//        list = new ArrayList<Deal>();
+        adapterClass = new AdapterClass(getActivity(), ProfileFragment.list);
+        recyclerView.setAdapter(adapterClass);
 
 
-        recentDealsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.
-                        action_requestsThatIRespondedFragment_to_recentDealsResponded);
-            }
-        });
+        adapterClass.notifyDataSetChanged();
 
 
 

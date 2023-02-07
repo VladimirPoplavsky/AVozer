@@ -122,7 +122,14 @@
         android:id="@+id/requestsThatIRespondedFragment"
         android:name="com.firstapp.avozer.fragments.RequestsThatIRespondedFragment"
         android:label="fragment_requests_that_i_responded"
-        tools:layout="@layout/fragment_requests_that_i_responded" />
+        tools:layout="@layout/fragment_requests_that_i_responded" >
+        <action
+            android:id="@+id/action_requestsThatIRespondedFragment_to_upcomingDealsResponded"
+            app:destination="@id/upcomingDealsResponded" />
+        <action
+            android:id="@+id/action_requestsThatIRespondedFragment_to_recentDealsResponded"
+            app:destination="@id/recentDealsResponded" />
+    </fragment>
     <fragment
         android:id="@+id/myProfileInfoFragment"
         android:name="com.firstapp.avozer.fragments.MyProfileInfoFragment"
@@ -138,4 +145,14 @@
         android:name="com.firstapp.avozer.fragments.MyRequestsWaiting"
         android:label="fragment_my_requests_waiting"
         tools:layout="@layout/fragment_my_requests_waiting" />
+    <fragment
+        android:id="@+id/upcomingDealsResponded"
+        android:name="com.firstapp.avozer.fragments.UpcomingDealsResponded"
+        android:label="fragment_upcoming_deals_responded"
+        tools:layout="@layout/fragment_upcoming_deals_responded" />
+    <fragment
+        android:id="@+id/recentDealsResponded"
+        android:name="com.firstapp.avozer.fragments.RecentDealsResponded"
+        android:label="fragment_recent_deals_responded"
+        tools:layout="@layout/fragment_recent_deals_responded" />
 </navigation>
