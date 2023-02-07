@@ -5,6 +5,9 @@ import static com.firstapp.avozer.AdapterClass.ARG2;
 import static com.firstapp.avozer.AdapterClass.ARG3;
 import static com.firstapp.avozer.AdapterClass.ARG4;
 import static com.firstapp.avozer.AdapterClass.ARG5;
+import static com.firstapp.avozer.AdapterClass.ARG6;
+import static com.firstapp.avozer.AdapterClass.ARG7;
+import static com.firstapp.avozer.AdapterClass.ARG8;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -82,9 +85,11 @@ public class DealDetailsFragment extends Fragment {
             mSummary = getArguments().getString(ARG2);
             mDateAndTime = getArguments().getString(ARG3);
             mCity = getArguments().getString(ARG4);
-            mClientId = getArguments().getString(ARG5);
+            mClientFirstName = getArguments().getString(ARG5);
+            mClientLastName = getArguments().getString(ARG6);
+            mClientPhone = getArguments().getString(ARG7);
+            mClientEmail = getArguments().getString(ARG8);
         }
-        getUserData();
     }
 
     @Override
@@ -123,23 +128,4 @@ public class DealDetailsFragment extends Fragment {
         return view;
     }
 
-    public void getUserData() {
-        final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().
-                child("users").child(mClientId);
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Person client = snapshot.getValue(Person.class);
-                mClientFirstName = client.firstName;
-                mClientLastName = client.lastName;
-                mClientPhone = client.phone;
-                mClientEmail = client.email;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
 }
