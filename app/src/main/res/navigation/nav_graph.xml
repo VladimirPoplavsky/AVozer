@@ -110,7 +110,14 @@
         android:id="@+id/myHelpRequests"
         android:name="com.firstapp.avozer.fragments.MyHelpRequests"
         android:label="fragment_my_help_requests"
-        tools:layout="@layout/fragment_my_help_requests" />
+        tools:layout="@layout/fragment_my_help_requests" >
+        <action
+            android:id="@+id/action_myHelpRequests_to_myRequestsAccepted"
+            app:destination="@id/myRequestsAccepted" />
+        <action
+            android:id="@+id/action_myHelpRequests_to_myRequestsWaiting"
+            app:destination="@id/myRequestsWaiting" />
+    </fragment>
     <fragment
         android:id="@+id/requestsThatIRespondedFragment"
         android:name="com.firstapp.avozer.fragments.RequestsThatIRespondedFragment"
@@ -121,4 +128,14 @@
         android:name="com.firstapp.avozer.fragments.MyProfileInfoFragment"
         android:label="fragment_my_profile_info"
         tools:layout="@layout/fragment_my_profile_info" />
+    <fragment
+        android:id="@+id/myRequestsAccepted"
+        android:name="com.firstapp.avozer.fragments.MyRequestsAccepted"
+        android:label="fragment_my_requests_accepted"
+        tools:layout="@layout/fragment_my_requests_accepted" />
+    <fragment
+        android:id="@+id/myRequestsWaiting"
+        android:name="com.firstapp.avozer.fragments.MyRequestsWaiting"
+        android:label="fragment_my_requests_waiting"
+        tools:layout="@layout/fragment_my_requests_waiting" />
 </navigation>
