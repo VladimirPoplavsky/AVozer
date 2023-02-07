@@ -87,8 +87,30 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                 bundle.putString(ARG8, clientEmail);
 
 
-                Navigation.findNavController(view).navigate(
-                        R.id.action_findRequestFormFragment_to_dealDetailsFragment, bundle);
+                try{
+                    Navigation.findNavController(view).navigate(
+                            R.id.action_findRequestFormFragment_to_dealDetailsFragment, bundle);
+                }catch (RuntimeException e){
+                    try{
+                        Navigation.findNavController(view).navigate(
+                                R.id.action_myRequestsAccepted_to_dealDetailsFragment, bundle);
+                    }catch (RuntimeException e1){
+                        try{
+                            Navigation.findNavController(view).navigate(
+                                    R.id.action_myRequestsWaiting_to_dealDetailsFragment, bundle);
+                        }catch (RuntimeException e2){
+                            try{
+                                Navigation.findNavController(view).navigate(
+                                        R.id.action_upcomingDealsResponded_to_dealDetailsFragment, bundle);
+                            }catch (RuntimeException e3){
+                                Navigation.findNavController(view).navigate(
+                                        R.id.action_recentDealsResponded_to_dealDetailsFragment, bundle);
+                            }
+                        }
+
+                    }
+                }
+
             }
         };
 
@@ -134,8 +156,6 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public void getUserData() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users").child(clientId);
-
-
 
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

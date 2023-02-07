@@ -139,20 +139,36 @@
         android:id="@+id/myRequestsAccepted"
         android:name="com.firstapp.avozer.fragments.MyRequestsAccepted"
         android:label="fragment_my_requests_accepted"
-        tools:layout="@layout/fragment_my_requests_accepted" />
+        tools:layout="@layout/fragment_my_requests_accepted" >
+        <action
+            android:id="@+id/action_myRequestsAccepted_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myRequestsWaiting"
         android:name="com.firstapp.avozer.fragments.MyRequestsWaiting"
         android:label="fragment_my_requests_waiting"
-        tools:layout="@layout/fragment_my_requests_waiting" />
+        tools:layout="@layout/fragment_my_requests_waiting" >
+        <action
+            android:id="@+id/action_myRequestsWaiting_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/upcomingDealsResponded"
         android:name="com.firstapp.avozer.fragments.UpcomingDealsResponded"
         android:label="fragment_upcoming_deals_responded"
-        tools:layout="@layout/fragment_upcoming_deals_responded" />
+        tools:layout="@layout/fragment_upcoming_deals_responded" >
+        <action
+            android:id="@+id/action_upcomingDealsResponded_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/recentDealsResponded"
         android:name="com.firstapp.avozer.fragments.RecentDealsResponded"
         android:label="fragment_recent_deals_responded"
-        tools:layout="@layout/fragment_recent_deals_responded" />
+        tools:layout="@layout/fragment_recent_deals_responded" >
+        <action
+            android:id="@+id/action_recentDealsResponded_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
 </navigation>
