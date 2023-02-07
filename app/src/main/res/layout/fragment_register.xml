@@ -266,6 +266,7 @@
             android:backgroundTint="@color/design_default_color_secondary"
             android:gravity="center|center_horizontal"
             android:text="REGISTER"
+            app:cornerRadius="150dp"
             tools:ignore="MissingClass" />
     </LinearLayout>
 
