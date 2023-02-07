@@ -59,6 +59,16 @@
                     android:text="Job Description"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
+                <TextView
+                    android:id="@+id/date_and_time_detail_find"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+
+                    android:text="Date And Time"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
             </LinearLayout>
         </LinearLayout>
 

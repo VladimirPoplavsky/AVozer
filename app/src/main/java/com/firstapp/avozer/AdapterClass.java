@@ -18,6 +18,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
     public static final String ARG1 = "jobeType";
     public static final String ARG2 = "comment";
+    public static final String ARG3 = "dateAndTime";
 
     Context context;
 
@@ -27,12 +28,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
     Deal dealsToShowFromDB;
 
-    public static int selectedPosition;
+//    public static int selectedPosition;
 
     public AdapterClass(Context context, ArrayList<Deal> list1) {
         this.context = context;
         this.list1 = list1;
-
     }
 
     @NonNull
@@ -49,12 +49,14 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             public void onClick(View view) {
                 TextView jobType = view.findViewById(R.id.jobTypeCV);
                 TextView comments = view.findViewById(R.id.commentCV);
+                TextView when = view.findViewById(R.id.whenCV);
                 System.out.println(jobType.getText().toString());
                 System.out.println(comments.getText().toString());
 
                 Bundle bundle = new Bundle();
                 bundle.putString(ARG1, jobType.getText().toString());
                 bundle.putString(ARG2, comments.getText().toString());
+                bundle.putString(ARG3, when.getText().toString());
                 Navigation.findNavController(view).navigate(
                         R.id.action_findRequestFormFragment_to_dealDetailsFragment, bundle);
             }

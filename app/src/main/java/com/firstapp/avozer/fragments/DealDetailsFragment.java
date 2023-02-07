@@ -2,6 +2,7 @@ package com.firstapp.avozer.fragments;
 
 import static com.firstapp.avozer.AdapterClass.ARG1;
 import static com.firstapp.avozer.AdapterClass.ARG2;
+import static com.firstapp.avozer.AdapterClass.ARG3;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ public class DealDetailsFragment extends Fragment {
 
     private String mTitle;
     private String mSummary;
+    private String mDateAndTime;
 
     public DealDetailsFragment() {
         // Required empty public constructor
@@ -36,6 +38,7 @@ public class DealDetailsFragment extends Fragment {
         if (getArguments() != null) {
             mTitle = getArguments().getString(ARG1);
             mSummary = getArguments().getString(ARG2);
+            mDateAndTime = getArguments().getString(ARG3);
         }
     }
 
@@ -46,10 +49,12 @@ public class DealDetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_deal_details, container, false);
         TextView type = view.findViewById(R.id.work_type_detail_find);
         TextView comment = view.findViewById(R.id.textViewVersion);
+        TextView whenNeed = view.findViewById(R.id.date_and_time_detail_find);
 
         // test
         type.setText(mTitle);
         comment.setText(mSummary);
+        whenNeed.setText(mDateAndTime);
 
         //end test
 
