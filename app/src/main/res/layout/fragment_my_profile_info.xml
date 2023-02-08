@@ -1,43 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/purple_200"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background"
     tools:context=".fragments.MyProfileInfoFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="50dp"
-        android:text="My profile" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
+            android:gravity="center"
+            android:text="My profile"
+            android:textColor="@color/black"
+            android:textSize="50dp"
+            android:textStyle="bold|italic" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
+            android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
+        </LinearLayout>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textViewNameProfile"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"></LinearLayout>
+            android:layout_height="47dp"
+            android:layout_gravity="center|left"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textViewLastNameProfile"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textViewCityProfile"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textViewFacebook"
+            android:layout_width="238dp"
+            android:layout_height="72dp"
+            android:text="TextView" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="248dp"
+            android:layout_height="56dp"
+            android:layout_margin="24dp"
+            android:src="@drawable/baseline_network_ping_24" />
+
     </LinearLayout>
+
 </FrameLayout>
