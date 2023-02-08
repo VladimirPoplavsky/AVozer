@@ -42,7 +42,7 @@
             android:layout_above="@+id/need_help_button"
             android:layout_marginBottom="-8dp"
             android:gravity="center"
-            android:text="Wellcom to AVozer How can we help you?"
+            android:text="Wellcome to AVozer What do you like to do?"
             android:textColor="@color/color_white"
 
             android:textSize="40dp"
