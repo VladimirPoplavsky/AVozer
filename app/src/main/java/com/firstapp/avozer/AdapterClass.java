@@ -71,7 +71,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                 TextView city = view.findViewById(R.id.cityNameCV);
                 TextView client = view.findViewById(R.id.clientIdCV);
                 clientId = client.getText().toString();
-                getUserData();
+
 //                System.out.println(jobType.getText().toString());
 //                System.out.println(comments.getText().toString());
 
@@ -153,7 +153,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         }
     }
 
-    public void getUserData() {
+    public View getUserData(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users").child(clientId);
 
@@ -173,6 +173,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
             }
         });
+        notifyDataSetChanged();
+        return view;
     }
 
 
