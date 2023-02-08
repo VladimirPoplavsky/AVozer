@@ -42,39 +42,38 @@
             android:layout_above="@+id/need_help_button"
             android:layout_marginBottom="-8dp"
             android:gravity="center"
-            android:textStyle="italic"
+            android:text="Wellcom to AVozer How can we help you?"
             android:textColor="@color/color_white"
 
-            android:text="Wellcom to AVozer How can we help you?"
-            android:textSize="40dp" />
+            android:textSize="40dp"
+            android:textStyle="bold|italic" />
 
         <com.google.android.material.button.MaterialButton
-                    android:id="@+id/need_help_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_centerHorizontal="false"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:backgroundTint="@color/design_default_color_secondary"
-                    app:cornerRadius="100dp"
-                    android:textSize="45sp"
-                    android:text="I need help" />
+            android:id="@+id/need_help_button"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/design_default_color_secondary"
+            android:text="I need help"
+            android:textSize="35sp"
+            app:cornerRadius="100dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/want_help_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/need_help_button"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="96dp"
-                    android:layout_marginBottom="20dp"
-                    android:backgroundTint="@color/design_default_color_secondary"
-                    app:cornerRadius="100dp"
-                    android:textSize="40sp"
-                    android:text="I want to help" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/want_help_button"
+            android:layout_width="284dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/need_help_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="96dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/design_default_color_secondary"
+            android:text="I want to help"
+            android:textSize="35sp"
+            app:cornerRadius="100dp" />
 
 
     </RelativeLayout>
