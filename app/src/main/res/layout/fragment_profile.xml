@@ -31,9 +31,24 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/frameLayout"/>
+            android:id="@+id/frameLayout">
 
-                <com.google.android.material.button.MaterialButton
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="394dp"
+            android:layout_height="159dp"
+            android:layout_above="@+id/need_help_button"
+            android:layout_marginBottom="-8dp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:textColor="@color/color_white"
+
+            android:text="Wellcom to AVozer How can we help you?"
+            android:textSize="40dp" />
+
+        <com.google.android.material.button.MaterialButton
                     android:id="@+id/need_help_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
