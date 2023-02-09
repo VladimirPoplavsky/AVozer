@@ -32,7 +32,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public static String ARG8 = "clientEmail";
     public static String ARG9 = "dealId";
 
-//
+    //
     public String clientId;
     public String dealId;
     public String clientFirstName = "";
@@ -59,10 +59,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent ,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
         //working on the details screen from this and below !!!
         publicView = view;
         CardView cardView = view.findViewById(R.id.cardView);
+
 
         final View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
@@ -92,22 +93,22 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                 bundle.putString(ARG9, dealId.getText().toString());
 
 
-                try{
+                try {
                     Navigation.findNavController(view).navigate(
                             R.id.action_findRequestFormFragment_to_dealDetailsFragment, bundle);
-                }catch (RuntimeException e){
-                    try{
+                } catch (RuntimeException e) {
+                    try {
                         Navigation.findNavController(view).navigate(
                                 R.id.action_myRequestsAccepted_to_dealDetailsFragment, bundle);
-                    }catch (RuntimeException e1){
-                        try{
+                    } catch (RuntimeException e1) {
+                        try {
                             Navigation.findNavController(view).navigate(
                                     R.id.action_myRequestsWaiting_to_dealDetailsFragment, bundle);
-                        }catch (RuntimeException e2){
-                            try{
+                        } catch (RuntimeException e2) {
+                            try {
                                 Navigation.findNavController(view).navigate(
                                         R.id.action_upcomingDealsResponded_to_dealDetailsFragment, bundle);
-                            }catch (RuntimeException e3){
+                            } catch (RuntimeException e3) {
                                 Navigation.findNavController(view).navigate(
                                         R.id.action_recentDealsResponded_to_dealDetailsFragment, bundle);
                             }
@@ -141,7 +142,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         return list1.size();
     }
 
-    public  class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView jobType, city, when, comments;
         TextView clientId, dealId;
@@ -161,6 +162,9 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     }
 
     public void getUserData() {
+
+        // if there any open deals, so clientId = "",
+        // because there is single dummy element in list to prevent exception
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users").child(clientId);
 

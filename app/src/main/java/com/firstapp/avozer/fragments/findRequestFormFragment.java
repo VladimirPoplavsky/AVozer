@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,7 +43,7 @@ public class findRequestFormFragment extends Fragment {
     AdapterClass adapterClass;
 
 
-    private ArrayList<Deal> dealsList;
+    private ArrayList<Deal> dealsList = new ArrayList<Deal>();
 
 
     public findRequestFormFragment() {
@@ -116,21 +117,36 @@ public class findRequestFormFragment extends Fragment {
         long currentTimeMillis = System.currentTimeMillis();
         long dealTimeMillis = 0;
         int listSize = ProfileFragment.list.size();
+        Deal tempDeal;
+        boolean helperIsFound;
 
         for (int i = 0; i < listSize - 1; i++) {
-            dealUid = ProfileFragment.list.get(i).clientUid;
-            myDate = ProfileFragment.list.get(i).whenNeedHelp;
-            sdf = new SimpleDateFormat("d/m/yyyy h:m");
-            try {
-                d = sdf.parse(myDate);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
-            dealTimeMillis = d.getTime();
 
-            if (!(currentUid.equals(dealUid))) {
-                dealsList.add(ProfileFragment.list.get(i));
+            helperIsFound = ProfileFragment.list.get(i).helperIsFound;
+
+            if(!helperIsFound) {
+                dealUid = ProfileFragment.list.get(i).clientUid;
+                myDate = ProfileFragment.list.get(i).whenNeedHelp;
+                sdf = new SimpleDateFormat("d/M/y H:m");
+                try {
+                    d = sdf.parse(myDate);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+                assert d != null;
+                dealTimeMillis = d.getTime();
+
+                if (!(currentUid.equals(dealUid))
+                        && currentTimeMillis < dealTimeMillis) {
+                    dealsList.add(ProfileFragment.list.get(i));
+                }
             }
+        }
+
+        // dummy element to prevent exception
+        if(dealsList.size() == 0){
+            Toast.makeText(getActivity(), "There are any open requests at the moment",Toast.LENGTH_SHORT).show();
+
         }
     }
 }

@@ -12,7 +12,7 @@ public class Deal {
     public boolean dealIsDone;
     public String comments;
 
-    public boolean isExpanded = false;
+//    public boolean isExpanded = false;
 
 
     public Deal(String city, String dealID, String type, String clientUid, String helperUid,
@@ -33,10 +33,10 @@ public class Deal {
 
     public Deal(){}
 
-    public boolean isExpanded() {
-        return isExpanded;
-    }
-    public void  setExpanded(boolean expanded){
-        isExpanded=expanded;
-    }
+//    public boolean isExpanded() {
+//        return isExpanded;
+//    }
+//    public void  setExpanded(boolean expanded){
+//        isExpanded=expanded;
+//    }
 }
