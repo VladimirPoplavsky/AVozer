@@ -12,7 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firstapp.avozer.AdapterClass;
+import com.firstapp.avozer.Deal;
 import com.firstapp.avozer.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +40,9 @@ public class findRequestFormFragment extends Fragment {
     RecyclerView recyclerView;
 
     AdapterClass adapterClass;
+
+
+    private ArrayList<Deal> dealsList;
 
 
     public findRequestFormFragment() {
@@ -78,18 +89,49 @@ public class findRequestFormFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        dataInitialize();
-        ///////
+
+        getDeals();
+
         recyclerView = view.findViewById(R.id.recyclerView);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 //        list = new ArrayList<Deal>();
-        adapterClass = new AdapterClass(getActivity(), ProfileFragment.list);
+        adapterClass = new AdapterClass(getActivity(), dealsList);
         recyclerView.setAdapter(adapterClass);
 
 
         adapterClass.notifyDataSetChanged();
+    }
+
+    private void getDeals() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        String currentUid = user.getUid();
+        String dealUid = "";
+        String myDate = "";
+        SimpleDateFormat sdf = null;
+        Date d = null;
+        long currentTimeMillis = System.currentTimeMillis();
+        long dealTimeMillis = 0;
+        int listSize = ProfileFragment.list.size();
+
+        for (int i = 0; i < listSize - 1; i++) {
+            dealUid = ProfileFragment.list.get(i).clientUid;
+            myDate = ProfileFragment.list.get(i).whenNeedHelp;
+            sdf = new SimpleDateFormat("d/m/yyyy h:m");
+            try {
+                d = sdf.parse(myDate);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            dealTimeMillis = d.getTime();
+
+            if (!(currentUid.equals(dealUid))) {
+                dealsList.add(ProfileFragment.list.get(i));
+            }
+        }
     }
 }
 

@@ -30,9 +30,11 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public static String ARG6 = "clientLirstName";
     public static String ARG7 = "clientPhone";
     public static String ARG8 = "clientEmail";
+    public static String ARG9 = "dealId";
 
 //
     public String clientId;
+    public String dealId;
     public String clientFirstName = "";
     public String clientLastName = "";
     public String clientPhone = "";
@@ -70,6 +72,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                 TextView when = view.findViewById(R.id.whenCV);
                 TextView city = view.findViewById(R.id.cityNameCV);
                 TextView client = view.findViewById(R.id.clientIdCV);
+                TextView dealId = view.findViewById(R.id.dealIdCV);
                 clientId = client.getText().toString();
                 getUserData();
 //                System.out.println(jobType.getText().toString());
@@ -85,6 +88,8 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
                 bundle.putString(ARG6, clientLastName);
                 bundle.putString(ARG7, clientPhone);
                 bundle.putString(ARG8, clientEmail);
+
+                bundle.putString(ARG9, dealId.getText().toString());
 
 
                 try{
@@ -128,6 +133,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
         holder.when.setText(dealsToShowFromDB.whenNeedHelp);
         holder.comments.setText(dealsToShowFromDB.comments);
         holder.clientId.setText(dealsToShowFromDB.clientUid);
+        holder.dealId.setText(dealsToShowFromDB.dealID);
     }
 
     @Override
@@ -138,7 +144,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
     public  class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView jobType, city, when, comments;
-        TextView clientId;
+        TextView clientId, dealId;
 
         CardView cardView;
 
@@ -150,6 +156,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
             when = itemView.findViewById(R.id.whenCV);
             comments = itemView.findViewById(R.id.commentCV);
             clientId = itemView.findViewById(R.id.clientIdCV);
+            dealId = itemView.findViewById(R.id.dealIdCV);
         }
     }
 
@@ -173,6 +180,7 @@ public class AdapterClass extends RecyclerView.Adapter<AdapterClass.MyViewHolder
 
             }
         });
+
     }
 
 

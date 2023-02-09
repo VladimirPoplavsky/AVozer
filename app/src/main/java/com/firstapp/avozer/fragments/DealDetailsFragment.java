@@ -8,6 +8,7 @@ import static com.firstapp.avozer.AdapterClass.ARG5;
 import static com.firstapp.avozer.AdapterClass.ARG6;
 import static com.firstapp.avozer.AdapterClass.ARG7;
 import static com.firstapp.avozer.AdapterClass.ARG8;
+import static com.firstapp.avozer.AdapterClass.ARG9;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,18 +16,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.firstapp.avozer.Person;
 import com.firstapp.avozer.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -40,7 +39,6 @@ public class DealDetailsFragment extends Fragment {
     private String mSummary;
     private String mDateAndTime;
     private String mCity;
-    private String mClientId;
     private String mClientFirstName;
     private String mClientLastName;
     private String mClientPhone;
@@ -125,6 +123,28 @@ public class DealDetailsFragment extends Fragment {
                         R.id.action_dealDetailsFragment_to_findRequestFormFragment);
             }
         });
+
+        Button acceptDealBtn = view.findViewById(R.id.accept_this_deal);
+        acceptDealBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "Accepted successfully",Toast.LENGTH_SHORT).show();
+
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                assert user != null;
+                String uid = user.getUid();
+
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("deals").
+                        child(getArguments().getString(ARG9)).child("helperUid");
+                myRef.setValue(uid);
+
+                myRef = database.getReference("deals").
+                        child(getArguments().getString(ARG9)).child("helperIsFound");
+                myRef.setValue(true);
+            }
+        });
+
         return view;
     }
 

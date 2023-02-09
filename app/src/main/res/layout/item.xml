@@ -97,6 +97,14 @@
                 android:textColor="#00FFFFFF"
                 android:textSize="0sp" />
 
+            <TextView
+                android:id="@+id/dealIdCV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text=""
+                android:textColor="#00FFFFFF"
+                android:textSize="0sp" />
 
 
 
