@@ -117,7 +117,6 @@ public class findRequestFormFragment extends Fragment {
         long currentTimeMillis = System.currentTimeMillis();
         long dealTimeMillis = 0;
         int listSize = ProfileFragment.list.size();
-        Deal tempDeal;
         boolean helperIsFound;
 
         for (int i = 0; i < listSize - 1; i++) {

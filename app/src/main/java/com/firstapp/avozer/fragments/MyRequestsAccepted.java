@@ -4,13 +4,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firstapp.avozer.AdapterClass;
+import com.firstapp.avozer.Deal;
 import com.firstapp.avozer.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +37,9 @@ public class MyRequestsAccepted extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private ArrayList<Deal> dealsList = new ArrayList<Deal>();
+
 
     public MyRequestsAccepted() {
         // Required empty public constructor
@@ -68,6 +77,9 @@ public class MyRequestsAccepted extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_requests_waiting, container, false);
 
+        getDeals();
+
+
         super.onViewCreated(view, savedInstanceState);
 //        dataInitialize();
         ///////
@@ -77,7 +89,7 @@ public class MyRequestsAccepted extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 //        list = new ArrayList<Deal>();
-        adapterClass = new AdapterClass(getActivity(), ProfileFragment.list);
+        adapterClass = new AdapterClass(getActivity(), dealsList);
         recyclerView.setAdapter(adapterClass);
 
 
@@ -85,4 +97,30 @@ public class MyRequestsAccepted extends Fragment {
 
         return view;
     }
+
+    private void getDeals() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        String currentUid = user.getUid();
+        String dealUid = "";
+        int listSize = ProfileFragment.list.size();
+        boolean helperIsFound;
+
+        for (int i = 0; i < listSize - 1; i++) {
+            helperIsFound = ProfileFragment.list.get(i).helperIsFound;
+            dealUid = ProfileFragment.list.get(i).clientUid;
+
+            if (currentUid.equals(dealUid) && helperIsFound) {
+                dealsList.add(ProfileFragment.list.get(i));
+            }
+        }
+
+
+        // dummy element to prevent exception
+        if (dealsList.size() == 0) {
+            Toast.makeText(getActivity(), "There are any open requests at the moment", Toast.LENGTH_SHORT).show();
+
+        }
+    }
 }
+
