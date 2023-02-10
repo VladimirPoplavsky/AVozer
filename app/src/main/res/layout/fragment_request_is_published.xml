@@ -13,16 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.9"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="110dp"
-            android:layout_marginVertical="20dp"
-            android:layout_weight="1"
-            android:drawableLeft="@drawable/outline_tag_faces_24" />
-    </LinearLayout>
+        android:orientation="horizontal"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,9 +28,9 @@
             android:layout_marginVertical="20dp"
             android:layout_weight="1"
             android:text="Thank You, your request has been successfully sent"
-            android:textColor="#A4A416"
+            android:textColor="@color/color_white"
             android:textSize="35sp"
-            android:textStyle="bold" />
+            android:textStyle="bold|italic" />
     </LinearLayout>
 
     <LinearLayout
@@ -56,9 +47,9 @@
             android:layout_marginVertical="20dp"
             android:layout_weight="1"
             android:text="wait patiently, someone will surely approve it"
-            android:textColor="#A4A416"
+            android:textColor="@color/color_white"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold|italic" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,7 +67,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/design_default_color_secondary"
+            android:backgroundTint="@color/teal_200"
             android:minHeight="48dp"
             android:text="Return to Home Page"
             tools:ignore="TouchTargetSizeCheck" />

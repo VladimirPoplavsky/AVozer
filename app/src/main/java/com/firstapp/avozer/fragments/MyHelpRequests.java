@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.R;
+import com.google.android.material.appbar.MaterialToolbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,6 +82,13 @@ public class MyHelpRequests extends Fragment {
             }
         });
 
+        MaterialToolbar toolbar = view.findViewById(R.id.topAppBar);
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_myHelpRequests_to_profileFragment);
+            }
+        });
 
         return view;
     }

@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="select">Select Item</string>
+    <string name="www.facebook.com">facebook</string>
 
     <string-array name="ways_to_help">
         <item>Babysitter</item>

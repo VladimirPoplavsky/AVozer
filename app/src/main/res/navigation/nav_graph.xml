@@ -117,6 +117,9 @@
         <action
             android:id="@+id/action_myHelpRequests_to_myRequestsWaiting"
             app:destination="@id/myRequestsWaiting" />
+        <action
+            android:id="@+id/action_myHelpRequests_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/requestsThatIRespondedFragment"
@@ -129,12 +132,19 @@
         <action
             android:id="@+id/action_requestsThatIRespondedFragment_to_recentDealsResponded"
             app:destination="@id/recentDealsResponded" />
+        <action
+            android:id="@+id/action_requestsThatIRespondedFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/myProfileInfoFragment"
         android:name="com.firstapp.avozer.fragments.MyProfileInfoFragment"
         android:label="fragment_my_profile_info"
-        tools:layout="@layout/fragment_my_profile_info" />
+        tools:layout="@layout/fragment_my_profile_info" >
+        <action
+            android:id="@+id/action_myProfileInfoFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myRequestsAccepted"
         android:name="com.firstapp.avozer.fragments.MyRequestsAccepted"

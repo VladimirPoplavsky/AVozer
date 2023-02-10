@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.R;
+import com.google.android.material.appbar.MaterialToolbar;
 
 /**
  * A simple {@link Fragment} subclass.gfdgdf
@@ -79,6 +80,15 @@ public class RequestsThatIRespondedFragment extends Fragment {
             public void onClick(View v) {
                 Navigation.findNavController(view).navigate(R.id.
                         action_requestsThatIRespondedFragment_to_recentDealsResponded);
+            }
+        });
+
+        MaterialToolbar toolbar = view.findViewById(R.id.topAppBar);
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).
+                        navigate(R.id.action_requestsThatIRespondedFragment_to_profileFragment);
             }
         });
 
