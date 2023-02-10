@@ -111,7 +111,9 @@ public class MyRequestsAccepted extends Fragment {
             dealUid = ProfileFragment.list.get(i).clientUid;
 
             if (currentUid.equals(dealUid) && helperIsFound) {
-                dealsList.add(ProfileFragment.list.get(i));
+                if(!dealsList.contains(ProfileFragment.list.get(i))){
+                    dealsList.add(ProfileFragment.list.get(i));
+                }
             }
         }
 

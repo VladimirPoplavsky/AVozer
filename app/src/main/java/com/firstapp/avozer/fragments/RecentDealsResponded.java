@@ -133,7 +133,9 @@ public class RecentDealsResponded extends Fragment {
 
                 if (currentUid.equals(helperUid)
                         && currentTimeMillis >= dealTimeMillis) {
-                    dealsList.add(ProfileFragment.list.get(i));
+                    if(!dealsList.contains(ProfileFragment.list.get(i))){
+                        dealsList.add(ProfileFragment.list.get(i));
+                    }
                 }
             }
         }

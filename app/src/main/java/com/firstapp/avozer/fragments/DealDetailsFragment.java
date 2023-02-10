@@ -142,6 +142,9 @@ public class DealDetailsFragment extends Fragment {
                 myRef = database.getReference("deals").
                         child(getArguments().getString(ARG9)).child("helperIsFound");
                 myRef.setValue(true);
+
+                Navigation.findNavController(view).navigate(
+                        R.id.action_dealDetailsFragment_to_profileFragment);
             }
         });
 

@@ -111,7 +111,9 @@ public class MyRequestsWaiting extends Fragment {
             dealClientUid = ProfileFragment.list.get(i).clientUid;
 
             if (currentUid.equals(dealClientUid) && !helperIsFound) {
-                dealsList.add(ProfileFragment.list.get(i));
+                if(!dealsList.contains(ProfileFragment.list.get(i))){
+                    dealsList.add(ProfileFragment.list.get(i));
+                }
             }
         }
 

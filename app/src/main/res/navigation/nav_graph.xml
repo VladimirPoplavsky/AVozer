@@ -105,6 +105,9 @@
         <action
             android:id="@+id/action_dealDetailsFragment_to_findRequestFormFragment"
             app:destination="@id/findRequestFormFragment" />
+        <action
+            android:id="@+id/action_dealDetailsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/myHelpRequests"
