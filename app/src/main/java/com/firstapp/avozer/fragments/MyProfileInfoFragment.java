@@ -89,7 +89,8 @@ public class MyProfileInfoFragment extends Fragment {
         buttonToC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_myProfileInfoFragment_to_changing_Password_In_User_Profile);
+                Navigation.findNavController(view).
+                        navigate(R.id.action_myProfileInfoFragment_to_changing_Password_In_User_Profile);
 
             }
         });

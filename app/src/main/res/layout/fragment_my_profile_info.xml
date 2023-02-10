@@ -107,23 +107,14 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textViewOfChangePass"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_gravity="center_vertical"
-            android:background="#5B287C51"
-            android:gravity="center_horizontal"
-            android:text="Here you can change your password"
-            android:textSize="25sp"
-            android:textStyle="bold|italic" />
-
         <Button
             android:id="@+id/buttonForChangingP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="70dp"
-            android:text="Change your password" />
+            android:backgroundTint="@color/design_default_color_secondary"
+            app:cornerRadius="100dp"
+            android:text="Change password" />
 
 
     </LinearLayout>
