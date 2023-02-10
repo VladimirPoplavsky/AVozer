@@ -12,7 +12,8 @@
         android:id="@+id/button_choose_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/design_default_color_secondary"
+        android:backgroundTint="@color/lightgrey"
+        app:cornerRadius="100dp"
         android:text="Choose file" />
 
     <TextView
@@ -22,7 +23,8 @@
         android:layout_marginStart="16dp"
         android:layout_toEndOf="@+id/button_choose_image"
         android:text="to verify your identity upload selfie picture with your
-Israel ID" />
+Israel ID"
+        android:textStyle="bold|italic" />
 
     <ImageView
         android:id="@+id/image_view"
@@ -48,6 +50,8 @@ Israel ID" />
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/design_default_color_secondary"
+        app:cornerRadius="100dp"
+        android:textSize="30sp"
         android:text="Upload" />
 
 

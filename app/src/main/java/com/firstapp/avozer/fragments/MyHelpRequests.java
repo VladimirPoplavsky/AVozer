@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.firstapp.avozer.R;
+import com.google.android.material.appbar.MaterialToolbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +18,7 @@ import com.firstapp.avozer.R;
  * create an instance of this fragment.
  */
 public class MyHelpRequests extends Fragment {
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,7 +63,33 @@ public class MyHelpRequests extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_help_requests, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_help_requests, container, false);
+
+        Button myRqstsAccepted = view.findViewById(R.id.open_my_rqsts_accepted);
+        Button myRqstsWaiting = view.findViewById(R.id.open_my_rqsts_waiting);
+        myRqstsAccepted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_myHelpRequests_to_myRequestsAccepted);
+            }
+        });
+
+
+        myRqstsWaiting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_myHelpRequests_to_myRequestsWaiting);
+            }
+        });
+
+        MaterialToolbar toolbar = view.findViewById(R.id.topAppBar);
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_myHelpRequests_to_profileFragment);
+            }
+        });
+
+        return view;
     }
 }

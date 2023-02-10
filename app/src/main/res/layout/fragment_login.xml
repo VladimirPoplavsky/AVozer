@@ -67,6 +67,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
+        app:cornerRadius="100dp"
+
         android:text="LOGIN" />
 
     <com.google.android.material.button.MaterialButton
@@ -78,6 +80,7 @@
         android:layout_marginTop="96dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
+        app:cornerRadius="100dp"
         android:text="REGISTER" />
 
     <com.google.android.material.button.MaterialButton
@@ -88,6 +91,7 @@
         android:layout_below="@id/registerBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="96dp"
+        app:cornerRadius="100dp"
         android:backgroundTint="@color/design_default_color_secondary"
         />
 

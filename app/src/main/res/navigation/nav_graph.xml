@@ -62,8 +62,8 @@
         android:label="fragment_id_verification"
         tools:layout="@layout/fragment_id_verification" >
         <action
-            android:id="@+id/action_idVerificationFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_idVerificationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/findRequestFormFragment"
@@ -110,15 +110,75 @@
         android:id="@+id/myHelpRequests"
         android:name="com.firstapp.avozer.fragments.MyHelpRequests"
         android:label="fragment_my_help_requests"
-        tools:layout="@layout/fragment_my_help_requests" />
+        tools:layout="@layout/fragment_my_help_requests" >
+        <action
+            android:id="@+id/action_myHelpRequests_to_myRequestsAccepted"
+            app:destination="@id/myRequestsAccepted" />
+        <action
+            android:id="@+id/action_myHelpRequests_to_myRequestsWaiting"
+            app:destination="@id/myRequestsWaiting" />
+        <action
+            android:id="@+id/action_myHelpRequests_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/requestsThatIRespondedFragment"
         android:name="com.firstapp.avozer.fragments.RequestsThatIRespondedFragment"
         android:label="fragment_requests_that_i_responded"
-        tools:layout="@layout/fragment_requests_that_i_responded" />
+        tools:layout="@layout/fragment_requests_that_i_responded" >
+        <action
+            android:id="@+id/action_requestsThatIRespondedFragment_to_upcomingDealsResponded"
+            app:destination="@id/upcomingDealsResponded" />
+        <action
+            android:id="@+id/action_requestsThatIRespondedFragment_to_recentDealsResponded"
+            app:destination="@id/recentDealsResponded" />
+        <action
+            android:id="@+id/action_requestsThatIRespondedFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myProfileInfoFragment"
         android:name="com.firstapp.avozer.fragments.MyProfileInfoFragment"
         android:label="fragment_my_profile_info"
-        tools:layout="@layout/fragment_my_profile_info" />
+        tools:layout="@layout/fragment_my_profile_info" >
+        <action
+            android:id="@+id/action_myProfileInfoFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myRequestsAccepted"
+        android:name="com.firstapp.avozer.fragments.MyRequestsAccepted"
+        android:label="fragment_my_requests_accepted"
+        tools:layout="@layout/fragment_my_requests_accepted" >
+        <action
+            android:id="@+id/action_myRequestsAccepted_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myRequestsWaiting"
+        android:name="com.firstapp.avozer.fragments.MyRequestsWaiting"
+        android:label="fragment_my_requests_waiting"
+        tools:layout="@layout/fragment_my_requests_waiting" >
+        <action
+            android:id="@+id/action_myRequestsWaiting_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/upcomingDealsResponded"
+        android:name="com.firstapp.avozer.fragments.UpcomingDealsResponded"
+        android:label="fragment_upcoming_deals_responded"
+        tools:layout="@layout/fragment_upcoming_deals_responded" >
+        <action
+            android:id="@+id/action_upcomingDealsResponded_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recentDealsResponded"
+        android:name="com.firstapp.avozer.fragments.RecentDealsResponded"
+        android:label="fragment_recent_deals_responded"
+        tools:layout="@layout/fragment_recent_deals_responded" >
+        <action
+            android:id="@+id/action_recentDealsResponded_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
 </navigation>
