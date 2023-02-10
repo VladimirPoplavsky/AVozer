@@ -145,7 +145,6 @@ public class findRequestFormFragment extends Fragment {
         // dummy element to prevent exception
         if(dealsList.size() == 0){
             Toast.makeText(getActivity(), "There are any open requests at the moment",Toast.LENGTH_SHORT).show();
-
         }
     }
 }
