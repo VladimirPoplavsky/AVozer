@@ -48,26 +48,57 @@
             android:layout_height="56dp"
             android:layout_gravity="center"
             android:background="#56FFFFFF"
-            android:text="TextView" />
+            android:textColor="#D09683"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"/>
 
         <TextView
             android:id="@+id/textViewLastNameProfile"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:text="TextView" />
+            android:textColor="#D09683"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewIdProfile"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="#56FFFFFF"
+            android:textColor="#D09683"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"/>
 
         <TextView
             android:id="@+id/textViewCityProfile"
             android:layout_width="match_parent"
             android:layout_height="58dp"
-            android:background="#56FFFFFF"
-            android:text="TextView" />
+            android:textColor="#D09683"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"/>
 
         <TextView
-            android:id="@+id/textViewFacebook"
+            android:id="@+id/textViewPhoneProfile"
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            android:text="TextView" />
+            android:background="#56FFFFFF"
+            android:textColor="#D09683"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"/>
+
+        <TextView
+            android:id="@+id/textViewEmailProfile"
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:textColor="#D09683"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:paddingLeft="20dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"

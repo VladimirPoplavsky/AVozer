@@ -34,7 +34,6 @@ import com.google.firebase.database.FirebaseDatabase;
  * create an instance of this fragment.
  */
 public class DealDetailsFragment extends Fragment {
-
     private String mTitle;
     private String mSummary;
     private String mDateAndTime;
