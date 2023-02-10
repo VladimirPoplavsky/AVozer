@@ -62,8 +62,8 @@
         android:label="fragment_id_verification"
         tools:layout="@layout/fragment_id_verification" >
         <action
-            android:id="@+id/action_idVerificationFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_idVerificationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/findRequestFormFragment"

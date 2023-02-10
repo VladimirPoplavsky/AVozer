@@ -202,7 +202,7 @@ public class idVerificationFragment extends Fragment {
 
 
                             Navigation.findNavController(view).
-                                    navigate(R.id.action_idVerificationFragment_to_profileFragment);
+                                    navigate(R.id.action_idVerificationFragment_to_loginFragment);
 
 
 //                            Upload upload = new Upload(mEditTextFileName.getText().toString().trim(),

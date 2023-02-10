@@ -102,15 +102,15 @@ public class MyRequestsWaiting extends Fragment {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         String currentUid = user.getUid();
-        String dealUid = "";
+        String dealClientUid = "";
         int listSize = ProfileFragment.list.size();
         boolean helperIsFound;
 
         for (int i = 0; i < listSize - 1; i++) {
             helperIsFound = ProfileFragment.list.get(i).helperIsFound;
-            dealUid = ProfileFragment.list.get(i).clientUid;
+            dealClientUid = ProfileFragment.list.get(i).clientUid;
 
-            if (currentUid.equals(dealUid) && !helperIsFound) {
+            if (currentUid.equals(dealClientUid) && !helperIsFound) {
                 dealsList.add(ProfileFragment.list.get(i));
             }
         }
