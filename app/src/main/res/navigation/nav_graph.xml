@@ -144,6 +144,9 @@
         <action
             android:id="@+id/action_myProfileInfoFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_myProfileInfoFragment_to_changing_Password_In_User_Profile"
+            app:destination="@id/changing_Password_In_User_Profile" />
     </fragment>
     <fragment
         android:id="@+id/myRequestsAccepted"
@@ -180,5 +183,14 @@
         <action
             android:id="@+id/action_recentDealsResponded_to_dealDetailsFragment"
             app:destination="@id/dealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changing_Password_In_User_Profile"
+        android:name="com.firstapp.avozer.fragments.changing_Password_In_User_Profile"
+        android:label="fragment_changing__password__in__user__profile"
+        tools:layout="@layout/fragment_changing__password__in__user__profile" >
+        <action
+            android:id="@+id/action_changing_Password_In_User_Profile_to_myProfileInfoFragment"
+            app:destination="@id/myProfileInfoFragment" />
     </fragment>
 </navigation>

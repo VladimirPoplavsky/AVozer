@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -65,11 +66,20 @@ public class MyProfileInfoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_my_profile_info, container, false);
 
         MaterialToolbar toolbar = view.findViewById(R.id.topAppBar);
+        Button buttonToC = view.findViewById(R.id.buttonForChangingP);
         toolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(view).
                         navigate(R.id.action_myProfileInfoFragment_to_profileFragment);
+            }
+        });
+
+        buttonToC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_myProfileInfoFragment_to_changing_Password_In_User_Profile);
+
             }
         });
 
