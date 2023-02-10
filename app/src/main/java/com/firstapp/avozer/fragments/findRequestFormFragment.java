@@ -84,6 +84,8 @@ public class findRequestFormFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find_request_form, container, false);
 
+        getDeals();
+
         return view;
     }
 
@@ -92,7 +94,6 @@ public class findRequestFormFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 //        dataInitialize();
 
-        getDeals();
 
         recyclerView = view.findViewById(R.id.recyclerView);
 
@@ -105,6 +106,7 @@ public class findRequestFormFragment extends Fragment {
 
 
         adapterClass.notifyDataSetChanged();
+
     }
 
     private void getDeals() {
@@ -120,7 +122,7 @@ public class findRequestFormFragment extends Fragment {
         int listSize = ProfileFragment.list.size();
         boolean helperIsFound;
 
-        for (int i = 0; i < listSize - 1; i++) {
+        for (int i = 0; i < listSize; i++) {
 
             helperIsFound = ProfileFragment.list.get(i).helperIsFound;
 
@@ -138,7 +140,9 @@ public class findRequestFormFragment extends Fragment {
 
                 if (!(currentUid.equals(dealUid))
                         && currentTimeMillis < dealTimeMillis) {
-                    dealsList.add(ProfileFragment.list.get(i));
+                    if(!dealsList.contains(ProfileFragment.list.get(i))){
+                        dealsList.add(ProfileFragment.list.get(i));
+                    }
                 }
             }
         }

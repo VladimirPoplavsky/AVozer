@@ -106,12 +106,14 @@ public class MyRequestsWaiting extends Fragment {
         int listSize = ProfileFragment.list.size();
         boolean helperIsFound;
 
-        for (int i = 0; i < listSize - 1; i++) {
+        for (int i = 0; i < listSize; i++) {
             helperIsFound = ProfileFragment.list.get(i).helperIsFound;
             dealClientUid = ProfileFragment.list.get(i).clientUid;
 
             if (currentUid.equals(dealClientUid) && !helperIsFound) {
-                dealsList.add(ProfileFragment.list.get(i));
+                if(!dealsList.contains(ProfileFragment.list.get(i))){
+                    dealsList.add(ProfileFragment.list.get(i));
+                }
             }
         }
 
