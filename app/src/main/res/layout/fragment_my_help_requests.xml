@@ -42,8 +42,8 @@
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/design_default_color_secondary"
-            android:text="Ozer is found"
-            android:textSize="45sp"
+            android:text="Helper is found"
+            android:textSize="40sp"
             app:cornerRadius="100dp" />
 
         <com.google.android.material.button.MaterialButton

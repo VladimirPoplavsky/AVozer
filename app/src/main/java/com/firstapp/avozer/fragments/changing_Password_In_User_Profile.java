@@ -1,11 +1,6 @@
 package com.firstapp.avozer.fragments;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.firstapp.avozer.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -86,12 +84,9 @@ public class changing_Password_In_User_Profile extends Fragment {
                 String reUserPass= newPass.getText().toString();
                 if (userPass.equals(reUserPass) == false){
                     Toast.makeText(getActivity(), "Password does not match", Toast.LENGTH_SHORT).show();
-
+                }else{
+                    changePassword(userPass);
                 }
-
-                changePassword(userPass);
-
-
             }
         });
 
@@ -114,8 +109,6 @@ public class changing_Password_In_User_Profile extends Fragment {
                         if (task.isSuccessful()) {
                             Log.d("Change Password", "Password updated");
                             Toast.makeText(getActivity(), "Password updated", Toast.LENGTH_SHORT).show();
-
-
 
                         } else {
                             Log.d("Change Password", "Error password not updated");
