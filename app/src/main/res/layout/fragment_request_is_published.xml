@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".fragments.requestIsPublished">
@@ -69,6 +70,7 @@
             android:layout_marginBottom="20dp"
             android:backgroundTint="@color/teal_200"
             android:minHeight="48dp"
+            app:cornerRadius="100dp"
             android:text="Return to Home Page"
             tools:ignore="TouchTargetSizeCheck" />
     </LinearLayout>
